@@ -1,0 +1,10 @@
+.*\.pyc$
+.*\.swp$
+.*\.orig$
+~$
+settings_local\.py$
+^django/
+^spawn\.sh$
+^update\.sh$
+^dump\.sql$
+^fcgi\.pid$

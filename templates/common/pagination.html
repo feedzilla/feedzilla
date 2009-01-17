@@ -1,0 +1,27 @@
+{% load i18n %}
+<div class="pagination">
+    <div class="pages">
+        {% ifnotequal pages 1 %}
+        <ul>
+            <li class="name">Страницы:</li>
+            {% if lower_page %} 
+            <li><a href="{{ get_params }}page={{ lower_page }}">&laquo;</a></li>
+            {% endif %}
+            {% for number in page_list %}
+            {% ifequal number "." %}...
+            {% else %}
+                {% ifequal number page %}
+                <li class="active">{{ number }}</li>
+                {% endifequal %}
+                {% ifnotequal number page %}
+                <li><a href="{{ get_params }}page={{ number }}">{{ number }}</a></li>
+                {% endifnotequal %}
+            {% endifequal %}
+            {% endfor %}
+            {% if higher_page %} 
+            <li><a href="{{ get_params }}page={{ higher_page }}">&raquo;</a></li>
+            {% endif %}
+        </ul>
+        {% endifnotequal %}
+    </div>
+</div>

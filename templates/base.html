@@ -1,0 +1,101 @@
+{% load common_extras %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+
+	zenlike1.0 by nodethirtythree design
+	http://www.nodethirtythree.com
+
+-->
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title></title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/zenlike.css" />
+<script type="text/javascript">
+    var host = '{{ request.get_host }}';
+    function google_search() {
+        var elem = document.getElementById('search_query');
+        var query = elem.value;
+        if (query) {
+            query = query + ' site:' + host.replace(/:\d+/, '');
+            location.href = 'http://www.google.ru/search?q=' + query + '&ie=utf-8&oe=utf-8&aq=t';
+        }
+        return false;
+    }
+</script>
+</head>
+<body>
+
+<div id="upbg"></div>
+
+<div id="outer">
+
+
+	<div id="header">
+		<div id="headercontent">
+            <h1>{{ request.subsite.name }}</h1>
+            <h2>{{ request.subsite.short_description }}</h2>
+		</div>
+	</div>
+
+
+	<form method="get" onsubmit="google_search(); return false;">
+		<div id="search">
+			<input id="search_query" type="text" class="text" maxlength="64" name="query" />
+			<input type="submit" class="submit" value="Искать" />
+		</div>
+	</form>
+
+
+	<div id="headerpic"></div>
+
+	
+	<div id="menu">
+		<!-- HINT: Set the class of any menu link below to "active" to make it appear active -->
+		<ul>
+			<li><a href="/">Начало</a></li>
+            <li><a href="{% url feed.views.sources %}">Источники агрегации</a></li>
+			<!--<li><a href="/about/">О сайте</a></li>-->
+		</ul>
+	</div>
+    <div class="divider1"></div>
+    <div id="menubottom">
+    
+    </div>
+
+	
+	<div id="content">
+
+
+
+		<!-- Primary content: Stuff that goes in the primary content column (by default, the left column) -->
+		<div id="primarycontainer">
+			<div id="primarycontent">
+				<!-- Primary content area start -->
+                {% block content %}{% endblock %}
+				<!-- Primary content area end -->
+			</div>
+		</div>
+
+		
+		<!-- Secondary content: Stuff that goes in the secondary content column (by default, the narrower right column) -->
+		<div id="secondarycontent">
+			<!-- Secondary content area start -->
+            {% include "sidebar.html" %}
+            {% block right_extra_content %}{% endblock %}
+			<!-- Secondary content area end -->
+		</div>
+
+
+	</div>
+
+	<div id="footer">
+        {% include "footer.html" %}
+	</div>
+	
+</div>
+
+</body>
+</html>

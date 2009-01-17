@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load common_extras %}
+
+{% block content %}
+<h4>Поиск по запросу &laquo;{{ query }}&raquo;</h4>
+<div class="divider2"></div>
+{% if posts %}
+{% include 'feed/post_list.html' %}
+{% pagination %}
+{% else %}
+<p>По вашему запросу ничего не найдно</p>
+{% endif %}
+<p>Внимание: при поиске слова короче четырёх символов не учитываются</p>
+{% endblock %}

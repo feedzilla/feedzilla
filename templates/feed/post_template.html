@@ -1,0 +1,26 @@
+{% load common_extras %}
+
+<div class="post">
+    <h4><a href="{{ post.get_absolute_url }}">{{ post.title|safe }}</a></h4>
+    <div class="contentarea">
+        <div class="details">Опубликовано {{ post.created|date:"d M H:i" }}{% if post.tags %}, <span class="tags">Тэги: {{ post.tags }}{% endif %}</span>
+        </div>
+        <p>
+            {% if not verbose %}
+            {{ post.summary|safe }}
+            {% else %}
+            {{ post.content|safe }}
+            {% endif %}
+        </p>
+        <ul class="controls">
+        {% if verbose %}
+            <li>Оригинал сообщения: <a href="{{ post.link }}">{{ post.link }}</a></li><br/>
+            <li>Сайт-источник: <a href="{{ post.feed.site_url }}">{{ post.feed.title }}</a></li>
+        {% else %}
+            <li><a href="{% url feed.views.post post.id %}" class="more">Читать дальше</a></li>				
+        {% endif %}
+        </ul>
+    </div>
+</div>
+
+<div class="divider2"></div>

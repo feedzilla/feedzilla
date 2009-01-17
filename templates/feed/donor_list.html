@@ -1,0 +1,7 @@
+{% load common_extras %}
+
+<ul>
+    {% for donor in donors %}
+    <li><a href="{{ donor.site_url }}">{{ donor.title }}</a></li>
+    {% endfor %}
+</ul>

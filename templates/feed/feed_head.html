@@ -1,0 +1,6 @@
+{% load common_extras %}
+<ul>
+    {% for post in posts %}
+    <li>{{ post.summary }}</li>
+    {% endfor %}
+</ul>

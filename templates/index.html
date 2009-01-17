@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% load common_extras %}
+{% load feed_extras %}
+
+{% block content %}
+{% include 'feed/post_list.html' %}
+{% pagination %}
+{% endblock %}

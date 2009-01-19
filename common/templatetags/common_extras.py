@@ -3,6 +3,7 @@ from django import template
 from django.template import RequestContext
 from django.utils.encoding import smart_unicode
 from django.db import settings
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 
@@ -74,5 +75,5 @@ def field_as_p(form, field_name):
 
 
 @register.filter
-def strong_spaces(string):
-    return string.replace(u' ',u'&nbsp;')
+def strong_spaces(text):
+    return mark_safe(text.replace(u' ',u'&nbsp;'))

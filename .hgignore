@@ -4,7 +4,9 @@
 ~$
 settings_local\.py$
 ^django/
+^django$
 ^spawn\.sh$
 ^update\.sh$
 ^dump\.sql$
 ^fcgi\.pid$
+^logs/

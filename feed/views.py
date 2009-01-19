@@ -53,3 +53,20 @@ def sources(request):
 
     return {'feed': Feed.objects.all(),
             }
+
+
+@render_to('feed/search.html')
+@paged('posts', settings.FEEDZILLA_PAGE_SIZE)
+def search(request):
+    query = request.GET.get('query', '') 
+    min_limit = 2
+    if len(query) < min_limit:
+        posts = []
+        message = u'Ваш запрос короче %d символов' % min_limit
+    else:
+        posts = Post.objects.filter(content__icontains=query)
+        message = ''
+    return {'paged_qs': posts,
+            'message': message,
+            'query': query,
+            }

@@ -13,18 +13,8 @@
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/zenlike.css" />
-<script type="text/javascript">
-    var host = '{{ request.get_host }}';
-    function google_search() {
-        var elem = document.getElementById('search_query');
-        var query = elem.value;
-        if (query) {
-            query = query + ' site:' + host.replace(/:\d+/, '');
-            location.href = 'http://www.google.ru/search?q=' + query + '&ie=utf-8&oe=utf-8&aq=t';
-        }
-        return false;
-    }
-</script>
+<script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery.js"></script>
+{% block head_extra %}{% endblock %}
 </head>
 <body>
 
@@ -41,9 +31,9 @@
 	</div>
 
 
-	<form method="get" onsubmit="google_search(); return false;">
+    <form action="{% url search %}" method="get">
 		<div id="search">
-			<input id="search_query" type="text" class="text" maxlength="64" name="query" />
+            <input id="search_query" type="text" class="text" maxlength="64" name="query" value="{% block query_value %}{% endblock %}" />
 			<input type="submit" class="submit" value="Искать" />
 		</div>
 	</form>

@@ -6,5 +6,6 @@ urlpatterns = patterns('feed.views',
     url('^feed/(?P<feed_id>\d+)/$', 'feed'),
     url('^tag/(?P<tag_value>.+)/$', 'tag'),
     url('^sources/$', 'sources'),
+    url('^search/$', 'search', name='search'),
 )
 

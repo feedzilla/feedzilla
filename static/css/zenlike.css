@@ -378,3 +378,7 @@ bottom: 1.2em;
 a img {
     border: none;
 }
+
+.highlight {
+    background-color: yellow;
+}

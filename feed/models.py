@@ -26,7 +26,12 @@ class Feed(models.Model):
         verbose_name = u'Фид'
         verbose_name_plural = u'Фиды'
 
-    
+   
+class ActivePostManager(models.Manager):
+    def get_query_set(self):
+        return super(ActivePostManager, self).get_query_set().filter(active=True)
+
+
 class Post(models.Model):
     feed = models.ForeignKey(Feed, verbose_name=u'Фид', related_name='posts')
     title = models.CharField(u'Заголовок', max_length=255)
@@ -36,6 +41,10 @@ class Post(models.Model):
     created = models.DateTimeField(u'Время создания')
     guid = models.CharField(u'Идентификатор', max_length=255, unique=True)
     tags = TagField()
+    active = models.BooleanField(u'Активен', blank=True, default=True)
+
+    objects = models.Manager()
+    active_objects = ActivePostManager()
 
     class Meta:
         ordering = ['-created']
@@ -47,3 +56,21 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('feedzilla_post', args=[self.id])
+
+
+class FilterTag(models.Model):
+    value = models.CharField(max_length=255, unique=True)
+
+    def __unicode__(self):
+        return self.value
+
+
+class FilterWord(models.Model):
+    value = models.CharField(max_length=255, unique=True)
+
+    def __unicode__(self):
+        return self.value
+
+
+from feed import signals
+signals.setup()

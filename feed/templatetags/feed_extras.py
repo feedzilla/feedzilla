@@ -14,7 +14,7 @@ def tag_cloud(context):
     Show tag cloud for specified site.
     """
 
-    tags = Tag.objects.cloud_for_model(Post)
+    tags = Tag.objects.cloud_for_model(Post, filters={'active': True})
     return {'tags': tags,
             }
 
@@ -38,7 +38,7 @@ def feed_head(feed_id, number=3):
 
     try:
         feed = Feed.objects.get(pk=feed_id)
-        messages = feed.posts.all()[:number]
+        messages = feed.posts.all().filter(active=True)[:number]
     except Feed.DoesNotExist:
         feed = None
         messages =  []

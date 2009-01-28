@@ -15,6 +15,8 @@ def parse_time(time):
     Parse datetime from string.
     """
 
+    if isinstance(time, (str, unicode)):
+        return datetime.now()
     return datetime.fromtimestamp(mktime(time))
 
 

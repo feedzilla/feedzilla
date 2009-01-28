@@ -13,4 +13,3 @@ class Command(BaseCommand):
 
         for post in Post.objects.all():
             post.save()
-            print post.title, post.active

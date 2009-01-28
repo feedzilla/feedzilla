@@ -23,9 +23,9 @@ def parse_modified_date(entry):
     Find out modified date of feed entry.
     """
 
-    if hasattr(entry, 'modified_parsed'):
+    if getattr(entry, 'modified_parsed'):
         return parse_time(entry.modified_parsed)
-    if hasattr(entry, 'modified'):
+    if getattr(entry, 'modified'):
         return parse_time(entry.modified)
     return datetime.now()
 

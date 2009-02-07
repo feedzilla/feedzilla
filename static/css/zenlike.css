@@ -230,6 +230,11 @@ bottom: 0em;
 padding: 0em 2.0em 1.3em 2.0em;
 }
 
+#headercontent h1 a {
+    color: #fff;
+    text-decoration: none;
+}
+
 #headercontent h1
 {
 font-weight: normal;

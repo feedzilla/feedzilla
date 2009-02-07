@@ -7,13 +7,15 @@ from django.conf import settings
 from common.decorators import render_to, paged
 from tagging.models import Tag, TaggedItem
 from feed.models import Post, Feed
+from common.util import paginate
 
 
 @render_to('index.html')
-@paged('posts', settings.FEEDZILLA_PAGE_SIZE)
 def index(request):
-    paged_qs = Post.active_objects.all().select_related('feed')
-    return {'paged_qs': paged_qs,
+    qs = Post.active_objects.all().select_related('feed')
+    page, paginator = paginate(qs, request, settings.FEEDZILLA_PAGE_SIZE)
+    return {'page': page,
+            'paginator': paginator,
             }
 
 
@@ -38,13 +40,14 @@ def feed(request, feed_id):
 
 
 @render_to('feed/tag.html')
-@paged('posts', settings.FEEDZILLA_PAGE_SIZE)
 def tag(request, tag_value):
     tag = Tag.objects.get(name=tag_value)
-    paged_qs = TaggedItem.objects.get_by_model(Post, tag).filter(active=True).order_by('-created')
+    qs = TaggedItem.objects.get_by_model(Post, tag).filter(active=True).order_by('-created')
+    page, paginator = paginate(qs, request, settings.FEEDZILLA_PAGE_SIZE)
 
     return {'tag': tag,
-            'paged_qs': paged_qs,
+            'page': page,
+            'paginator': paginator
             }
 
 

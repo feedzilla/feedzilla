@@ -408,3 +408,7 @@ a img {
     padding-right: 1em;
     background: no-repeat 100% 0.75em url(/static/images/external.png);
 }
+
+.pagination .summary, .pagination a {
+    padding-right: 1em;
+}

@@ -1,7 +1,7 @@
 <div class="pagination">
 
     {% if page.has_previous %}
-    <a href="?page={{ page.previous }}">&lt;Позже</a>
+    <a href="?page={{ page.previous_page_number }}">&lt;Позже</a>
     {% endif %}
 
     <span class="summary">Записи <strong>{{ page.start_index }}</strong>&mdash;<strong>{{ page.end_index }}</strong> из <strong>{{ paginator.count }}</strong>

@@ -12,7 +12,7 @@ from feed.models import Post, Feed
 @render_to('index.html')
 @paged('posts', settings.FEEDZILLA_PAGE_SIZE)
 def index(request):
-    paged_qs = Post.active_objects.all()
+    paged_qs = Post.active_objects.all().select_related('feed')
     return {'paged_qs': paged_qs,
             }
 

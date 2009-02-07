@@ -10,8 +10,9 @@ from feed.models import Feed, FilterWord
 
 feed_list = [
     (u'веб мозги', 'http://web-brains.com/feeds/atom/blog/', 'http://web-brains.com/'),
-    (u'rabchevsky.name', 'http://rabchevsky.name/rss.xml', 'http://rabchevsky.name/'),
-    (u'shcherbak.net', 'http://shcherbak.net/feed', 'http://shcherbak.net'),
+    #(u'rabchevsky.name', 'http://rabchevsky.name/rss.xml', 'http://rabchevsky.name/'),
+    #(u'shcherbak.net', 'http://shcherbak.net/feed', 'http://shcherbak.net'),
+    (u'net', 'http://netevolution.ru/rss.xml', 'http://netevolution.ru/'),
 ]
 
 for word in ['rdf', u'sparql', 'semantic']:

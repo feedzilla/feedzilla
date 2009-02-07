@@ -403,3 +403,8 @@ a img {
 .highlight {
     background-color: yellow;
 }
+
+.external {
+    padding-right: 1em;
+    background: no-repeat 100% 0.75em url(/static/images/external.png);
+}

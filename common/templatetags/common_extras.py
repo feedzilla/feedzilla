@@ -35,7 +35,7 @@ def pagination(context, adjacent_pages=5):
         if not context['pages'] - 1 in page_list:
             page_list.append('.')
         page_list.append(context['pages'])
-    get_params = '&'.join(['%s=%s' % (x[0],','.join(x[1])) for x in
+    get_params = '&'.join(['%s=%s' % (x[0],''.join(x[1])) for x in
         context['request'].GET.iteritems() if (not x[0] == 'page' and not x[0] == 'per_page')])
     if get_params:
         get_params = '?%s&' % get_params

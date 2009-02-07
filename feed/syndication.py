@@ -21,7 +21,7 @@ class PostFeed(Feed):
         return str(obj.guid)
 
     def items(self, obj):
-        return Post.objects.all().order_by('-created')
+        return Post.active_objects.all().order_by('-created')
 
     def item_pubdate(self, obj):
         return obj.created

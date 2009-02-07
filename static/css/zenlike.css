@@ -76,6 +76,10 @@ background-image: url('/static/images/db2.gif');
 padding-top: 1.3em;
 }
 
+.tag-cloud a {
+    font-size: 110%;
+}
+
 img
 {
 border: solid 1px #6F5230;

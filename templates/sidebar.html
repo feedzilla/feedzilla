@@ -1,17 +1,8 @@
 {% load feed_extras %}
 
-{% if not disable_sidebar_sources %}
 <div class="box">
-    <h4>Источники</h4>
-    <div class="contentarea">
-        {% donor_list %}
-    </div>
-</div>
-{% endif %}
-
-<div class="lightbox">
     <h4>Метки</h4>
-    <div class="contentarea">
+    <div class="contentarea tags">
     {% tag_cloud %}
     </div>
 </div>

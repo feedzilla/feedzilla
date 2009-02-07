@@ -46,7 +46,10 @@ def get_tags(entry):
                 term = getattr(tag, 'term', '')
             terms = term.strip().replace(',', '/').split('/')
             tags.update(x.strip() for x in terms if x.strip())
-    return tags
+
+    # Ok. Now let's delete duplicates in different case.
+    tag_map = dict((x.lower(), x) for x in tags)
+    return tag_map.values()
 
 
 def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):

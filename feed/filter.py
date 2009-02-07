@@ -10,7 +10,7 @@ def load_filters():
     from feed.models import FilterTag, FilterWord
 
     if not filter:
-        tags = [x.value for x in FilterTag.objects.all()]
+        tags = [x.value.upper() for x in FilterTag.objects.all()]
         words = [x.value for x in FilterWord.objects.all()]
         filter['tags'] = tags
         filter['words'] = words
@@ -20,7 +20,7 @@ def check_post(post):
     load_filters()
 
     for tag in Tag.objects.get_for_object(post):
-        if tag.name.upper() in filter['tags'].upper():
+        if tag.name.upper() in filter['tags']:
             return True
     text = strip_tags(post.content).upper()
 

@@ -11,7 +11,8 @@ def load_filters():
 
     if not filter:
         tags = [x.value.upper() for x in FilterTag.objects.all()]
-        words = [x.value for x in FilterWord.objects.all()]
+        words = [re.compile(ur'\b%s\b' % x.value, re.U | re.I)\
+            for x in FilterWord.objects.all()]
         filter['tags'] = tags
         filter['words'] = words
 
@@ -22,9 +23,8 @@ def check_post(post):
     for tag in Tag.objects.get_for_object(post):
         if tag.name.upper() in filter['tags']:
             return True
-    text = strip_tags(post.content).upper()
 
-    for word in filter['words']:
-        if re.compile(ur'\b%s\b' % word, re.U | re.I).search(text):
-            return True
-    return False
+    title = strip_tags(post.title)
+    text = strip_tags(post.content)
+
+    return any(x.search(text) or x.search(title) for x in filter['words'])

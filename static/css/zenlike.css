@@ -67,8 +67,9 @@ background-image: url('/static/images/db1.gif');
 h4
 {
 font-size: 1.2em;
-padding-right: 28px;
-background-image: url('/static/images/db2.gif');
+padding-right: 22px;
+/*background-image: url('/static/images/db2.gif');*/
+background: no-repeat 100% 2px url('/static/images/semweb.png');*/
 }
 
 .contentarea

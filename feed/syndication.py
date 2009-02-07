@@ -12,7 +12,7 @@ from feed.models import Post
 class PostFeed(Feed):
     feed_type = Atom1Feed
     link = '/posts/'
-    title = u'Новости семантического веба'
+    title = u'Новости сообщества веба данных'
 
     #def item_link(self, obj):
         #return obj.get_imdb_link()

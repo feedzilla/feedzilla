@@ -9,5 +9,5 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
     (r'^%s(?P<path>.*)$' % settings.MEDIA_URL.lstrip('/'),
         django.views.static.serve, {'document_root': settings.MEDIA_ROOT}),
-     (r'', include('feed.urls')),
+    (r'', include('feed.urls')),
 )

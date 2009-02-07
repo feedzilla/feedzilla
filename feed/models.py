@@ -55,7 +55,8 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('feedzilla_post', args=[self.id])
+        #return reverse('feedzilla_post', args=[self.id])
+        return self.link
 
 
 class FilterTag(models.Model):

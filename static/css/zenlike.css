@@ -123,6 +123,7 @@ color: #787878;
 .post ul.controls
 {
 clear: both;
+margin-top: 0.5em;
 }
 
 .post ul.controls li

@@ -17,7 +17,7 @@
             <li>Оригинал сообщения: <a href="{{ post.link }}">{{ post.link }}</a></li><br/>
             <li>Сайт-источник: <a href="{{ post.feed.site_url }}">{{ post.feed.title }}</a></li>
         {% else %}
-            <li><a href="{% url feed.views.post post.id %}" class="more">Читать дальше</a></li>				
+            <li><a href="{{ post.get_absolute_url }}" class="more">Читать дальше</a></li>				
         {% endif %}
         </ul>
     </div>

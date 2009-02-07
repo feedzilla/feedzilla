@@ -97,6 +97,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 FORCE_SCRIPT_NAME = ''
 FEEDZILLA_PAGE_SIZE = 5
+FEEDZILLA_SUMMARY_SIZE = 2000
 try:
     from settings_local import *
 except ImportError:

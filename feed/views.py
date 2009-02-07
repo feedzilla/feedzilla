@@ -52,6 +52,7 @@ def tag(request, tag_value):
 def sources(request):
 
     return {'feed': Feed.objects.all(),
+            'disable_sidebar_sources': True,
             }
 
 

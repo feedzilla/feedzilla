@@ -3,6 +3,8 @@
 {% load feed_extras %}
 
 {% block content %}
-{% include 'feed/post_list.html' %}
+{% for post in posts %}
+{% include 'feed/post_template.html' %}
+{% endfor %}
 {% pagination %}
 {% endblock %}

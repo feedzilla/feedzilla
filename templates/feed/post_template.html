@@ -1,9 +1,10 @@
 {% load common_extras %}
+{% load tagging_tags %}
 
 <div class="post">
     <h4><a href="{{ post.get_absolute_url }}">{{ post.title|safe }}</a></h4>
     <div class="contentarea">
-        <div class="details">Опубликовано {{ post.created|date:"d M H:i" }}{% if post.tags %}, <span class="tags">Тэги: {{ post.tags }}{% endif %}</span>
+        <div class="details">Опубликовано {{ post.created|date:"d M H:i" }}</span>
         </div>
         <p>
             {% if not verbose %}
@@ -13,11 +14,15 @@
             {% endif %}
         </p>
         <ul class="controls">
+            {% if post.tags %}<li><span class="tags">Тэги:
+                {% tags_for_object post as tags %}
+                {% for tag in tags %}<a href="{% url feedzilla_tag tag.name %}">{{ tag }}</a>{% endfor %}
+            </li>{% endif %}
         {% if verbose %}
             <li>Оригинал сообщения: <a href="{{ post.link }}">{{ post.link }}</a></li><br/>
             <li>Сайт-источник: <a href="{{ post.feed.site_url }}">{{ post.feed.title }}</a></li>
         {% else %}
-            <li><a href="{{ post.get_absolute_url }}" class="more">Читать дальше</a></li>				
+            {#<li><a href="{{ post.get_absolute_url }}" class="more">Читать дальше</a></li>#}
         {% endif %}
         </ul>
     </div>

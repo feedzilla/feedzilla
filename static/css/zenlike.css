@@ -115,7 +115,7 @@ margin: 2.0em 0em 2.0em 0em;
 .post .details
 {
 position: relative;
-top: -1.5em;
+top: -1.0em;
 font-size: 0.8em;
 color: #787878;
 }
@@ -137,6 +137,11 @@ font-size: 0.8em;
 background-repeat: no-repeat;
 background-position: left;
 padding: 0em 1.0em 0em 20px;
+}
+
+.post ul.controls li .tags a {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 .post ul.controls li a.printerfriendly

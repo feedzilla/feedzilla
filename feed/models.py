@@ -35,7 +35,7 @@ class ActivePostManager(models.Manager):
 class Post(models.Model):
     feed = models.ForeignKey(Feed, verbose_name=u'Фид', related_name='posts')
     title = models.CharField(u'Заголовок', max_length=255)
-    link = models.URLField(u'Ссылка', verify_exists=False)
+    link = models.TextField(u'Ссылка')
     summary = models.TextField(u'Введение', blank=True)
     content = models.TextField(u'Содержимое', blank=True)
     created = models.DateTimeField(u'Время создания')

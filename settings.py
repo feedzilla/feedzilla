@@ -93,11 +93,14 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.debug',
     'django.core.context_processors.media',
+    'feed.context_processor.feed',
 )
 
 FORCE_SCRIPT_NAME = ''
 FEEDZILLA_PAGE_SIZE = 25
 FEEDZILLA_SUMMARY_SIZE = 2000
+FEEDZILLA_SITE_TITLE = u'Новости сообщества веба данных'
+FEEDZILLA_SITE_DESCRIPTION = u'Всё о семантическом вебе, связанных данных, микроформатах и эволюции сети.'
 try:
     from settings_local import *
 except ImportError:

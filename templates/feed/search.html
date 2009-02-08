@@ -18,16 +18,13 @@ $(function() {
 {% block content %}
 <h4>Поиск по запросу &laquo;{{ query }}&raquo;</h4>
 <div class="divider2"></div>
-{% if posts %}
-{% include 'feed/post_list.html' %}
-{% pagination %}
+{% if page.object_list %}
+    {% for post in page.object_list %}
+    {% include 'feed/post_template.html' %}
+    {% endfor %}
+    {% include "common/pagination.html" %}
 {% else %}
-<p>
-{% if message %}
-{{ message }}
-{% else %}
-По вашему запросу ничего не найдено.
+    <p>{% if message %}{{ message }}{% else %}
+    По вашему запросу ничего не найдено.{% endif %}</p>
 {% endif %}
-{% endif %}
-</p>
 {% endblock %}

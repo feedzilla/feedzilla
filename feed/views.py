@@ -59,7 +59,6 @@ def sources(request):
 
 
 @render_to('feed/search.html')
-@paged('posts', settings.FEEDZILLA_PAGE_SIZE)
 def search(request):
     query = request.GET.get('query', '') 
     min_limit = 2
@@ -69,7 +68,10 @@ def search(request):
     else:
         posts = Post.active_objects.filter(content__icontains=query)
         message = ''
-    return {'paged_qs': posts,
+
+    page, paginator = paginate(posts, request, settings.FEEDZILLA_PAGE_SIZE)
+    return {'page': page,
+            'paginator': paginator,
             'message': message,
             'query': query,
             }

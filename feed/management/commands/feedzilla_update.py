@@ -26,8 +26,6 @@ class Command(BaseCommand):
                     try:
                         Post.objects.get(guid=entry['guid'])
                     except Post.DoesNotExist:
-                        print ', '.join(entry['tags'])
-                        print entry['link']
                         post = Post(
                             feed=feed,
                             tags=', '.join(entry['tags']),

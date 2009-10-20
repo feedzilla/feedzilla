@@ -1,6 +1,7 @@
 import random
 
 from django import template
+from django.utils.safestring import mark_safe
 
 from tagging.models import Tag
 
@@ -49,3 +50,7 @@ def feedzilla_feed_head(feed_id, number=3):
     return {'feed': feed,
             'messages': messages,
             }
+
+@register.filter
+def feedzilla_strong_spaces(text):
+        return mark_safe(text.replace(u' ',u'&nbsp;'))

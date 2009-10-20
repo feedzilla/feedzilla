@@ -26,13 +26,13 @@
 
 	<div id="header">
 		<div id="headercontent">
-            <h1><a href="/">{{ SITE_TITLE }}</a></h1>
-            <h2>{{ SITE_DESCRIPTION }}</h2>
+            <h1><a href="/">{{ FEEDZILLA_SITE_TITLE }}</a></h1>
+            <h2>{{ FEEDZILLA_SITE_DESCRIPTION }}</h2>
 		</div>
 	</div>
 
 
-    <form action="{% url search %}" method="get">
+    <form action="{% url feedzilla_search %}" method="get">
 		<div id="search">
             <input id="search_query" type="text" class="text" maxlength="64" name="query" value="{% block query_value %}{% endblock %}" />
 			<input type="submit" class="submit" value="Искать" />
@@ -49,8 +49,9 @@
 			<li><a href="/">Лента новостей</a></li>
             <li><a href="{% url feedzilla_sources %}">Источники агрегации</a></li>
 			<!--<li><a href="/about/">О сайте</a></li>-->
-            <li><a class="external" href="http://webofdata.ru">Сайт сообщества</a></li>
-            <li><a class="external" href="http://groups.google.com/group/webofdata-russian">Обсудить</a></li>
+            {% for link in FEEDZILLA_HEAD_LINKS %}
+            {{ link|safe }}
+            {% endfor %}
 		</ul>
 	</div>
     <div class="divider1"></div>

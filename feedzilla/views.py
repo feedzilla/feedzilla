@@ -6,7 +6,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 
 from common.decorators import render_to, paged
-from common.util import paginate
+from common.pagination import paginate
 from tagging.models import Tag, TaggedItem
 
 from feedzilla.models import Post, Feed

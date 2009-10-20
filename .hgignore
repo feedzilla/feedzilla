@@ -4,8 +4,3 @@ syntax:glob
 *.swp
 *.swo
 *.orig
-settings_local.py
-update.sh
-.env
-pip-log.txt
-feedzilla.old

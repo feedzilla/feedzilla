@@ -1,10 +1,9 @@
 {% extends 'base.html' %}
-{% load common_extras %}
 {% load feedzilla_tags %}
 
 {% block content %}
 {% for post in page.object_list %}
-{% include 'feed/post_template.html' %}
+{% include 'feedzilla/post_template.html' %}
 {% endfor %}
 {% include "common/pagination.html" %}
 {% endblock %}

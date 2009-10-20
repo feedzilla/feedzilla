@@ -10,6 +10,8 @@ Installation
  6. Setup Site instance via Django admin interface
  7. Setup feedzilla settings via settings.py.
     See README for the list of available settings.
+ 8. Copy or symlink `static` directory contents from feedzilla installation
+    directory to your %MEDIA_ROOT%
 
 
 Dependencies

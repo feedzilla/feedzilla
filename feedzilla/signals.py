@@ -5,7 +5,10 @@ import feedzilla.filter
 
 def post_saved(instance, **kwargs):
     if not hasattr(instance, '_processed'):
-        instance.active = feedzilla.filter.check_post(instance)
+        if instance.feed.skip_filters:
+            instance.active = True
+        else:
+            instance.active = feedzilla.filter.check_post(instance)
         instance._processed = True
         instance.save()
 

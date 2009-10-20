@@ -15,6 +15,7 @@ class PostFeed(Feed):
     feed_type = Atom1Feed
     link = '/'
     title = app_settings.SITE_TITLE
+    subtitle = app_settings.SITE_DESCRIPTION
 
     #def item_link(self, obj):
         #return obj.get_imdb_link()

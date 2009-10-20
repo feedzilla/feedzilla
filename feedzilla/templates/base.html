@@ -32,6 +32,12 @@
 		</div>
 	</div>
 
+    <div class="site-feed">
+        <a href="{% url feedzilla_feed "posts" %}">
+            <img src="{{ MEDIA_URL }}images/feed-icon-big.png" alt="ATOM лента этого сайта" />
+        </a>
+    </div>
+
 
     <form action="{% url feedzilla_search %}" method="get">
 		<div id="search">

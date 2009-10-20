@@ -7,17 +7,30 @@ import re
 from time import mktime
 from datetime import datetime
 import feedparser
+import logging
 
 import clean
 
-def parse_time(time):
+def guess_date(chunks):
     """
-    Parse datetime from string.
+    Try to find date in chunks.
+
+    Yep, shit.
     """
 
-    if isinstance(time, (str, unicode)):
-        return datetime.now()
-    return datetime.fromtimestamp(mktime(time))
+    #regexps = (
+        #(re.compile(r'\d+-\d+-\d+T\d+-\d+-\d+'), '%Y-%m-%dT%H:%M:%S'),
+    #)
+
+    #for chunk in chunks:
+        #print chunk
+        #for rex, format in regexps:
+            #match = rex.match(chunk)
+            #if match:
+                #return datetime.strptime(chunk, format)
+            #else:
+                #print 'bad rex'
+    return None
 
 
 def parse_modified_date(entry):
@@ -25,11 +38,29 @@ def parse_modified_date(entry):
     Find out modified date of feed entry.
     """
 
-    if getattr(entry, 'modified_parsed'):
-        return parse_time(entry.modified_parsed)
-    if getattr(entry, 'modified'):
-        return parse_time(entry.modified)
-    return datetime.now()
+    parsed = []
+    unparsed = []
+
+    keys = ['published', 'created', 'updated', 'modified']
+    for key in keys:
+        value = getattr(entry, '%s_parsed' % key, None)
+        if value:
+            parsed.append(value)
+        value = getattr(entry, key, None)
+        if value:
+            unparsed.append(value)
+
+    if parsed:
+        time_tuple = parsed[0]
+        return datetime.fromtimestamp(mktime(time_tuple))
+
+    if unparsed:
+        guessed = guess_date(unparsed)
+        if guessed:
+            return guessed
+        
+    logging.error('Could not parse modified date of %s' % getattr(entry, 'link', ''))
+    return None
 
 
 def get_tags(entry):
@@ -104,6 +135,9 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
         content = clean.safe_html(content)
 
         created = parse_modified_date(entry)
+        if not created:
+            continue
+
         tags = get_tags(entry)
         guid = sha.new(link.encode('utf-8')).hexdigest()
 

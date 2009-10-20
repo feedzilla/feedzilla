@@ -73,12 +73,30 @@ background: no-repeat 99% 5px url('/static/images/external.png');*/
 }
 
 h4 img {
-    border: none;
+    position: relative;
+    left: -5px;
+    top: 2px;
 }
 
 .contentarea
 {
 padding-top: 1.3em;
+}
+
+.contentarea ul, .contentarea ol {
+    margin-left: 1.5em;
+}
+
+.contentarea h2 {
+    margin-top: 0.5em;
+    font-size: 1.3em;
+}
+
+.contentarea h3 {
+    margin-top: 1em;
+    font-size: 1.2em;
+    display: block;
+    background: none;
 }
 
 .tag-cloud a {
@@ -87,7 +105,8 @@ padding-top: 1.3em;
 
 img
 {
-border: solid 1px #6F5230;
+/*border: solid 1px #6F5230;*/
+border: none;
 }
 
 img.left
@@ -415,4 +434,17 @@ a img {
 
 .pagination .summary, .pagination a {
     padding-right: 1em;
+}
+
+code {
+    padding-left: 0.3em;
+}
+
+pre, code.block {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    border: 1px solid #FFD452;/*#B96D00;*/
+    background-color: #FFE38F;
+    padding: 0.5em;
 }

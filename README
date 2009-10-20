@@ -2,8 +2,8 @@
 Feedzilla Django Application
 ============================
 
-This is django application that add to your site ability to aggregate
-ATOM/RSS feeds and display the in single stream.
+This is django application that adds to your site ability to aggregate
+ATOM/RSS feeds and display them in single stream.
 
 Project page: http://bitbucket.org/lorien/feedzilla
 

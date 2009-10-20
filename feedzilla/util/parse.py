@@ -8,6 +8,7 @@ from time import mktime
 from datetime import datetime
 import feedparser
 import logging
+#from dateutil import parser
 
 import clean
 
@@ -17,6 +18,13 @@ def guess_date(chunks):
 
     Yep, shit.
     """
+
+    #for chunk in chunks:
+        #try:
+            #print 'TRY', chunk
+            #return parser.parse(chunk)
+        #except ValueError:
+            #pass
 
     #regexps = (
         #(re.compile(r'\d+-\d+-\d+T\d+-\d+-\d+'), '%Y-%m-%dT%H:%M:%S'),
@@ -58,7 +66,7 @@ def parse_modified_date(entry):
         guessed = guess_date(unparsed)
         if guessed:
             return guessed
-        
+
     logging.error('Could not parse modified date of %s' % getattr(entry, 'link', ''))
     return None
 
@@ -95,6 +103,17 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
     resp = {'feed': None, 'success': False, 'entries': [], 'error': None}
 
     try:
+        #if url:
+            #source_data = urllib.urlopen(url).read()
+
+        # Crazy hack
+        #if '<rss' in source_data[:100]:
+            #if '<lastBuildDate>' in source_data:
+                #source_data = source_data.replace('<lastBuildDate>', '<pubDate>')
+                #source_data = source_data.replace('</lastBuildDate>', '</pubDate>')
+                #logging.debug('Crazy lastBuildDate hack was applyed to feed %s' % url)
+                #print source_data
+
         resp['feed'] = feedparser.parse(url and url or source_data)
     except Exception, ex:
         resp['error'] = ex

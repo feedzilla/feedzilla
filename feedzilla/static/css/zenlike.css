@@ -72,6 +72,10 @@ padding-right: 22px;
 background: no-repeat 99% 5px url('/static/images/external.png');*/
 }
 
+h4 img {
+    border: none;
+}
+
 .contentarea
 {
 padding-top: 1.3em;

@@ -1,5 +1,5 @@
 # -*- coding:utf-8 -*-
-import urlparse
+from urlparse import urlsplit
 import re
 
 from django.db.models import permalink
@@ -21,6 +21,9 @@ class Feed(models.Model):
 
     def get_absolute_url(self):
         return reverse('feedzilla_feed', args=[self.id])
+
+    def site_hostname(self):
+        return urlsplit(self.site_url).hostname
 
     class Meta:
         verbose_name = u'Фид'

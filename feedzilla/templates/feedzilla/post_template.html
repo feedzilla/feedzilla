@@ -1,7 +1,7 @@
 {% load tagging_tags %}
 
 <div class="post">
-    <h4><a href="{{ post.feed.site_url }}">{{ post.feed.title }}</a> &mdash; <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+    <h4><img src="http://favicon.yandex.net/favicon/{{ post.feed.site_hostname }}" /><a href="{{ post.feed.site_url }}">{{ post.feed.title }}</a> &mdash; <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
     <div class="contentarea">
         <div class="details">Опубликовано {{ post.created|date:"d M H:i" }}</span>
         </div>

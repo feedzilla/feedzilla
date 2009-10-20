@@ -1,11 +1,11 @@
 from django.db.models.signals import post_save
 
-from feed.models import Post
-import feed.filter
+from feedzilla.models import Post
+import feedzilla.filter
 
 def post_saved(instance, **kwargs):
     if not hasattr(instance, '_processed'):
-        instance.active = feed.filter.check_post(instance)
+        instance.active = feedzilla.filter.check_post(instance)
         instance._processed = True
         instance.save()
 

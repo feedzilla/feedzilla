@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load common_extras %}
 
 {% block head_extra %}
 <script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery.highlight-2.js"></script>
@@ -20,7 +19,7 @@ $(function() {
 <div class="divider2"></div>
 {% if page.object_list %}
     {% for post in page.object_list %}
-    {% include 'feed/post_template.html' %}
+    {% include 'feedzilla/post_template.html' %}
     {% endfor %}
     {% include "common/pagination.html" %}
 {% else %}

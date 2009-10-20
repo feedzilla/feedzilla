@@ -20,7 +20,7 @@ class Feed(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('feed.views.feed', args=[self.id])
+        return reverse('feedzilla_feed', args=[self.id])
 
     class Meta:
         verbose_name = u'Фид'
@@ -73,5 +73,5 @@ class FilterWord(models.Model):
         return self.value
 
 
-from feed import signals
+from feedzilla import signals
 signals.setup()

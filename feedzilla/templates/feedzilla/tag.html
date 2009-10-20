@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load common_extras %}
 
 {% block content %}
 <h4>Записи с меткой &laquo;{{ tag }}&raquo;</h4>
@@ -7,7 +6,7 @@
 <div class="contentarea">
 {% if page.object_list %}
     {% for post in page.object_list %}
-    {% include 'feed/post_template.html' %}
+    {% include 'feedzilla/post_template.html' %}
     {% endfor %}
     {% include "common/pagination.html" %}
 {% else %}

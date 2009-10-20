@@ -3,7 +3,7 @@ from datetime import datetime
 
 from django.core.management.base import BaseCommand
 
-from feed.models import Post
+from feedzilla.models import Post
 
 class Command(BaseCommand):
     help = u'Refilter posts'

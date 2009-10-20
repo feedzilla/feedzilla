@@ -1,0 +1,24 @@
+============================
+Feedzilla Django Application
+============================
+
+This is django application that add to your site ability to aggregate
+ATOM/RSS feeds and display the in single stream.
+
+Project page: http://bitbucket.org/lorien/feedzilla
+
+
+Installation
+============
+For installation instructions look into INSTALL document.
+
+
+Settings 
+========
+
+ * FEEDZILLA_PAGE_SIZE
+ * FEEDZILLA_SUMMARY_SIZE
+ * FEEDZILLA_SITE_TITLE
+ * FEEDZILLA_SITE_DESCRIPTION
+
+For actual list look into feedzilla/settings.py

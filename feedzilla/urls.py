@@ -1,15 +1,16 @@
 from django.conf.urls.defaults import *
-from feed.syndication import PostFeed
+
+from feedzilla.syndication import PostFeed
 
 feed_dict = {
     'posts': PostFeed,
 }
 
-urlpatterns = patterns('feed.views',
-    url(r'^$', 'index', name='index'),
+urlpatterns = patterns('feedzilla.views',
+    url(r'^$', 'index', name='feedzilla_index'),
     url('^tag/(?P<tag_value>.+)/$', 'tag', name='feedzilla_tag'),
-    url('^sources/$', 'sources'),
-    url('^search/$', 'search', name='search'),
+    url('^sources/$', 'sources', name='feedzilla_sources'),
+    url('^search/$', 'search', name='feedzilla_search'),
 )
 
 urlpatterns += patterns('django.contrib.syndication.views',

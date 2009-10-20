@@ -4,8 +4,8 @@ from datetime import datetime
 from django.core.management.base import BaseCommand
 from django.conf import settings
 
-from feed.util.parse import parse_feed
-from feed.models import Feed, Post
+from feedzilla.util.parse import parse_feed
+from feedzilla.models import Feed, Post
 
 class Command(BaseCommand):
     help = u'Update feeds'

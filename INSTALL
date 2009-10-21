@@ -2,16 +2,14 @@
 Installation
 ============
 
- 1. pip or easy_install feedzilla
- 2. Make sure you have install all dependencies
- 3. Add feedzilla to INSTALLED_APPS
- 4. Run `manage.py syncdb`
- 5. Add `url('', include('feedzilla.urls'))` into root urls.py
- 6. Setup Site instance via Django admin interface
- 7. Setup feedzilla settings via settings.py.
-    See README for the list of available settings.
- 8. Copy or symlink `static` directory contents from feedzilla installation
-    directory to your %MEDIA_ROOT%
+ * pip or easy_install feedzilla
+ * Make sure you have install all dependencies
+ * Add feedzilla to INSTALLED_APPS
+ * Run `manage.py syncdb`
+ * Add `url('', include('feedzilla.urls'))` into root urls.py
+ * Setup Site instance via Django admin interface
+ * Setup feedzilla settings via settings.py.  See README for the list of available settings.
+ * Setup static files. You should copy or symlink `static` directory contents from feedzilla installation directory to your %MEDIA_ROOT%. Check out the `manage.py feedzilla_static_location` command. It will show your where feedzilla static files are locatted.
 
 
 Dependencies

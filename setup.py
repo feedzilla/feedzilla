@@ -27,7 +27,7 @@ for dirpath, dirnames, filenames in os.walk(PACKAGE):
 
 setup(
     version = '0.1.0',
-    description = 'Django application for atom/rss feeds aggregation',
+    description = 'Django application for atom/rss feeds aggregation i.e. planet engine',
     author = 'Grigoriy Petukhov',
     author_email = 'lorien@lorien.name',
     url = 'http://bitbucket.org/lorien/feedzilla',
@@ -37,7 +37,7 @@ setup(
     package_data = {'feedzilla': data_files},
 
     license = "BSD",
-    keywords = "django application feeds syndication aggregation atom rss",
+    keywords = "django application feeds syndication aggregation atom rss planet",
     classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Web Environment',

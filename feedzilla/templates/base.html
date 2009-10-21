@@ -8,13 +8,13 @@
 <html>
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title></title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
+<title>{% block title %}{{ FEEDZILLA_SITE_TITLE }}{% endblock %}</title>
+<meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
+<meta name="description" content="{% block meta_description %}{% endblock %}" />
 <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/zenlike.css" />
 <script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery.js"></script>
 <script type="text/javascript" src="{{ MEDIA_URL }}/js/fix_tags.js"></script>
-<link rel="alternate" type="application/atom+xml" href="{% url feedzilla_feed "posts" %}" title="Новости семантического веба." />
+<link rel="alternate" type="application/atom+xml" href="{% url feedzilla_feed "posts" %}" title="{{ FEEDZILLA_SITE_TITLE }}" />
 {% block head_extra %}{% endblock %}
 </head>
 <body>

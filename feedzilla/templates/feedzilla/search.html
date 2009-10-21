@@ -15,7 +15,7 @@ $(function() {
 {% block query_value %}{{ query }}{% endblock %}
 
 {% block content %}
-<h4>Поиск по запросу &laquo;{{ query }}&raquo;</h4>
+<h2>{% block title %}Поиск по запросу &laquo;{{ query }}&raquo;{% endblock %}</h2>
 <div class="divider2"></div>
 {% if page.object_list %}
     {% for post in page.object_list %}

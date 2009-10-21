@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h4>Записи с меткой &laquo;{{ tag }}&raquo;</h4>
+<h2>{% block title %}Записи с меткой &laquo;{{ tag }}&raquo;{% endblock title %}</h2>
 <div class="divider2"></div>
 <div class="contentarea">
 {% if page.object_list %}

@@ -11,5 +11,12 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         logging.basicConfig(level=logging.DEBUG)
 
-        for post in Post.objects.all():
+        posts = Post.objects.all()
+        if args:
+            query = args[0]
+            posts = posts.filter(feed__site_url__icontains=query)
+
+        for post in posts:
             post.save()
+
+        print '%d posts processed' % posts.count()

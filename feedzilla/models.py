@@ -65,6 +65,7 @@ class Post(models.Model):
 
 class FilterTag(models.Model):
     value = models.CharField(max_length=255, unique=True)
+    exact = models.BooleanField(blank=True, default=False)
 
     def __unicode__(self):
         return self.value
@@ -72,6 +73,7 @@ class FilterTag(models.Model):
 
 class FilterWord(models.Model):
     value = models.CharField(max_length=255, unique=True)
+    exact = models.BooleanField(blank=True, default=False)
 
     def __unicode__(self):
         return self.value

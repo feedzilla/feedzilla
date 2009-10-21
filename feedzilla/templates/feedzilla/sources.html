@@ -6,10 +6,13 @@
 <div class="contentarea">
     <ul>
         {% for feed in feed %}
-        <li>
+        <li style="line-height: 1.6em">
             <a href="{{ feed.site_url }}">{{ feed.title }}</a>
+            &nbsp;
+            ({{ feed.post_count }})
+            &nbsp;
             <a href="{{ feed.feed_url }}">
-                <img src="{{ MEDIA_URL }}/images/feed-icon-small.png" />
+                <img style="position: relative; top: 3px" src="{{ MEDIA_URL }}/images/feed-icon-small.png" />
             </a>
         </li>
         {% endfor %}

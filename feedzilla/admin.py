@@ -8,6 +8,8 @@ class FeedAdmin(admin.ModelAdmin):
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'feed', 'created', 'active']
+    list_filter = ['feed']
+    search_fields = ['title', 'link', 'feed__title']
 
 class FilterTagAdmin(admin.ModelAdmin):
     list_display = ['value']

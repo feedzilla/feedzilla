@@ -4,6 +4,8 @@ import re
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+from django.db.models import Count
+from django.db import connection
 
 from common.decorators import render_to, paged
 from common.pagination import paginate
@@ -44,7 +46,23 @@ def tag(request, tag_value):
 @render_to('feedzilla/sources.html')
 def sources(request):
 
-    return {'feed': Feed.objects.all(),
+    feeds = Feed.objects.all()
+
+    cursor = connection.cursor()
+    cursor.execute("""
+        SELECT f.id, COUNT(*)
+        FROM feedzilla_feed f
+        JOIN feedzilla_post p
+            ON p.feed_id = f.id AND p.active
+        GROUP BY f.id
+    """)
+
+    count_map = dict(cursor.fetchall())
+    for feed in feeds:
+        feed.post_count = count_map.get(feed.pk, 0)
+
+
+    return {'feed': feeds,
             }
 
 

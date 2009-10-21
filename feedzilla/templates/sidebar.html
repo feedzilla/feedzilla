@@ -1,8 +1,14 @@
 {% load feedzilla_tags %}
 
+{% if FEEDZILLA_FEEDBURNER_COUNTER %}
+<div class="lightbox">
+{{ FEEDZILLA_FEEDBURNER_COUNTER|safe }}
+</div>
+{% endif %}
 <div class="box">
     <h4>Метки</h4>
     <div class="contentarea tags">
     {% feedzilla_tag_cloud %}
     </div>
 </div>
+

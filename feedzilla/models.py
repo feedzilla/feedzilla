@@ -16,6 +16,7 @@ class Feed(models.Model):
     etag = models.CharField(u'ETag', max_length=255, blank=True, default='')
     last_checked = models.DateTimeField(u'Время пооследней проверки', blank=True, null=True)
     skip_filters = models.BooleanField(u'Пропускать все сообщения', blank=True, default=False)
+    author = models.CharField('Автор блога', blank=True, max_length=255)
 
     def __unicode__(self):
         return self.title

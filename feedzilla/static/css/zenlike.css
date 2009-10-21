@@ -298,6 +298,10 @@ right: 2.0em;
 padding-right: 0.0em;
 }
 
+#search #search_query {
+    width: 15em;
+}
+
 .site-feed {
     position: absolute;
     top: 2em;

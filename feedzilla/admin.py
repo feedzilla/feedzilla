@@ -5,6 +5,7 @@ from feedzilla.models import Feed, Post, FilterTag, FilterWord
 
 class FeedAdmin(admin.ModelAdmin):
     list_display = ['title', 'feed_url', 'active', 'last_checked']
+    search_fields = ['title', 'site_url']
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'feed', 'created', 'active']

@@ -3,8 +3,6 @@ from django.conf import settings
 from feedzilla import settings as app_settings
 
 def feed(request):
-    return {'FEEDZILLA_SITE_TITLE': app_settings.SITE_TITLE,
-            'FEEDZILLA_SITE_DESCRIPTION': app_settings.SITE_DESCRIPTION,
-            'FEEDZILLA_HEAD_LINKS': app_settings.HEAD_LINKS,
-            'FEEDZILLA_COPYRIGHTS': app_settings.COPYRIGHTS,
-            }
+    keys = ('SITE_TITLE', 'SITE_DESCRIPTION', 'HEAD_LINKS',
+            'COPYRIGHTS', 'FEEDBURNER_FEED')
+    return dict(('FEEDZILLA_%s' % x, getattr(app_settings, x)) for x in keys)

@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/zenlike.css" />
 <script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery.js"></script>
 <script type="text/javascript" src="{{ MEDIA_URL }}/js/fix_tags.js"></script>
-<link rel="alternate" type="application/atom+xml" href="{% url feedzilla_feed "posts" %}" title="{{ FEEDZILLA_SITE_TITLE }}" />
+<link rel="alternate" type="application/atom+xml" href="{% if FEEDZILLA_FEEDBURNER_FEED %}{{ FEEDZILLA_FEEDBURNER_FEED }}{% else %}{% url feedzilla_feed "posts" %}{% endif %}" title="{{ FEEDZILLA_SITE_TITLE }}" />
 {% block head_extra %}{% endblock %}
 </head>
 <body>
@@ -33,7 +33,7 @@
 	</div>
 
     <div class="site-feed">
-        <a href="{% url feedzilla_feed "posts" %}">
+        <a href="{% if FEEDZILLA_FEEDBURNER_FEED %}{{ FEEDZILLA_FEEDBURNER_FEED }}{% else %}{% url feedzilla_feed "posts" %}{% endif %}">
             <img src="{{ MEDIA_URL }}images/feed-icon-big.png" alt="ATOM лента этого сайта" />
         </a>
     </div>

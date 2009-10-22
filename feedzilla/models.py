@@ -31,6 +31,9 @@ class Feed(models.Model):
         verbose_name = u'Фид'
         verbose_name_plural = u'Фиды'
 
+    def author_or_title(self):
+        return self.author or self.title
+
    
 class ActivePostManager(models.Manager):
     def get_query_set(self):

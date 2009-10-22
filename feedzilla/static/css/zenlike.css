@@ -59,9 +59,10 @@ background-position: right;
 
 h3
 {
+display: block;
 font-size: 1.7em;
 padding-right: 34px;
-background-image: url('/static/images/db1.gif');
+/*background-image: url('/static/images/db1.gif');*/
 }
 
 h4
@@ -155,12 +156,13 @@ color: #787878;
 {
 clear: both;
 margin-top: 0.5em;
+margin-left: 0;
 }
 
 .post ul.controls li
 {
 display: inline;
-font-size: 0.8em;
+font-size: 0.95em;
 }
 
 .post ul.controls li a
@@ -460,4 +462,19 @@ pre, code.block {
     border: 1px solid #FFD452;/*#B96D00;*/
     background-color: #FFE38F;
     padding: 0.5em;
+}
+
+h3.author {
+    position: relative;
+    left: -20px;
+    font-size: 1.5em;
+    margin-bottom: 0.2em;
+}
+
+h3.author a {
+    text-decoration: none;
+}
+
+h4.title a {
+    text-decoration: none;
 }

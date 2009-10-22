@@ -1,22 +1,24 @@
 {% load tagging_tags %}
 
 <div class="post">
-    <h4><img src="http://favicon.yandex.net/favicon/{{ post.feed.site_hostname }}" /><a href="{{ post.feed.site_url }}">{{ post.feed.title }}</a> &mdash; <a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+    <h3 class="author">
+        <img class="favicon" src="http://www.google.com/s2/favicons?domain={{ post.feed.site_hostname }}" />
+        <a href="{{ post.feed.site_url }}">{{ post.feed.author_or_title }}</a>
+    </h3>
+    <h4 class="title">
+        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+    </h4>
     <div class="contentarea">
-        <div class="details">
-            {% if post.feed.author %}
-            <span title="Автор">{{ post.feed.author }}</span>,
-            {% endif %}
-            <span title="Дата публикации">{{ post.created|date:"d M H:i" }}</span>
-        </span>
-        </div>
         <p>{{ post.content|safe }}</p>
-        <ul class="controls">
-            {% if post.tags %}<li><span class="tags">Тэги:
-                {% tags_for_object post as tags %}
-                {% for tag in tags %}<a href="{% url feedzilla_tag tag.name %}">{{ tag }}</a>{% endfor %}
-            </li>{% endif %}
-        </ul>
+        <div class="details">
+            <ul class="controls">
+                <li><span title="Дата публикации">{{ post.created|date:"d M H:i" }}</span></li>
+                {% if post.tags %}<li><span class="tags" title="Метки публикации">
+                    {% tags_for_object post as tags %}
+                    {% for tag in tags %}<a href="{% url feedzilla_tag tag.name %}">{{ tag }}</a>{% endfor %}
+                </li>{% endif %}
+            </ul>
+        </div>
     </div>
 </div>
 

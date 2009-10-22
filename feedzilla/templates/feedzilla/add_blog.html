@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Заявка на добавление нового блога</h1>
+{% if success %}
+<p>{{ success }}</p>
+{% else %}
+<form method="post" class="common-form">
+    {{ form.as_p }}
+    <p><input type="submit" value="Отправить" /></p>
+</form>
+{% endif %}
+{% endblock %}

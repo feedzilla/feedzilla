@@ -478,3 +478,30 @@ h3.author a {
 h4.title a {
     text-decoration: none;
 }
+
+.add-blog img {
+    position: relative;
+    top: 3px;
+}
+
+.add-blog {
+    font-size: 1.3em;
+    font-family: Verdana, sans-serif;
+}
+
+.common-form input, .common-form textarea {
+    display: block;
+}
+
+.common-form {
+    margin: 1em 0;
+}
+
+.common-form label {
+    font-weight: bold;
+}
+
+.errorlist li {
+    list-style-type: none;
+    color: red;
+}

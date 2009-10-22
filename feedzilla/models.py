@@ -83,5 +83,16 @@ class FilterWord(models.Model):
         return self.value
 
 
+class Request(models.Model):
+    url = models.CharField(max_length=255, unique=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return self.url
+
+    class Meta:
+        ordering = ['-created']
+
+
 from feedzilla import signals
 signals.setup()

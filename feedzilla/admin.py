@@ -1,7 +1,7 @@
 # -*- coding: utf-8
 
 from django.contrib import admin
-from feedzilla.models import Feed, Post, FilterTag, FilterWord
+from feedzilla.models import Feed, Post, FilterTag, FilterWord, Request
 
 class FeedAdmin(admin.ModelAdmin):
     list_display = ['title', 'active', 'last_checked',
@@ -32,7 +32,12 @@ class FilterTagAdmin(admin.ModelAdmin):
 class FilterWordAdmin(admin.ModelAdmin):
     list_display = ['value']
 
+
+class RequestAdmin(admin.ModelAdmin):
+    list_display = ['url', 'created']
+
 admin.site.register(Feed, FeedAdmin)
 admin.site.register(Post, PostAdmin)
 admin.site.register(FilterTag, FilterTagAdmin)
 admin.site.register(FilterWord, FilterWordAdmin)
+admin.site.register(Request, RequestAdmin)

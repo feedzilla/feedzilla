@@ -9,10 +9,12 @@ from django.db import connection
 
 from common.decorators import render_to, paged
 from common.pagination import paginate
+from common.forms import build_form
 from tagging.models import Tag, TaggedItem
 
 from feedzilla.models import Post, Feed
 from feedzilla import settings as app_settings
+from feedzilla.forms import AddBlogForm
 
 
 @render_to('index.html')
@@ -83,4 +85,16 @@ def search(request):
             'paginator': paginator,
             'message': message,
             'query': query,
+            }
+
+
+@render_to('feedzilla/add_blog.html')
+def add_blog(request):
+    form = build_form(AddBlogForm, request)
+    success = None
+    if form.is_valid():
+        form.save()
+        success = u'Спасибо. Ваша заявка принята и будет рассмотрена администратором сайта'
+    return {'form': form,
+            'success': success,
             }

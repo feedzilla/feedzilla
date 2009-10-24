@@ -4,3 +4,5 @@ syntax:glob
 *.swp
 *.swo
 *.orig
+*.egg-info/
+dist/

@@ -1,7 +1,14 @@
 # -*- coding: utf-8
 
 from django.contrib import admin
+from django.utils.translation import ugettext_lazy as _
+
 from feedzilla.models import Feed, Post, FilterTag, FilterWord, Request
+
+
+def html_link(link):
+    return u'<a href="%(link)s">%(label)s</a>' % {'link': link, 'label': _('link')}
+
 
 class FeedAdmin(admin.ModelAdmin):
     list_display = ['title', 'active', 'last_checked',
@@ -9,11 +16,11 @@ class FeedAdmin(admin.ModelAdmin):
     search_fields = ['title', 'site_url']
 
     def admin_feed_url(self, obj):
-        return u'<a href="%s">ссылка</a>' % obj.feed_url
+        return html_link(obj.feed_url)
     admin_feed_url.allow_tags = True
 
     def admin_site_url(self, obj):
-        return u'<a href="%s">ссылка</a>' % obj.site_url
+        return html_link(obj.site_url)
     admin_site_url.allow_tags = True
 
 class PostAdmin(admin.ModelAdmin):
@@ -23,7 +30,7 @@ class PostAdmin(admin.ModelAdmin):
     search_fields = ['title', 'link', 'feed__title']
 
     def admin_post_link(self, obj):
-        return u'<a href="%s">ссылка</a>' % obj.link
+        return html_link(obj.link)
     admin_post_link.allow_tags = True
 
 class FilterTagAdmin(admin.ModelAdmin):

@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-10-24 23:22+0600\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin.py:8 models.py:47
+msgid "link"
+msgstr "ссылка"
+
+#: forms.py:18
+msgid "This address has been already submitted."
+msgstr "Заявка для этого адреса уже была отправлена"
+
+#: forms.py:23
+#, python-format
+msgid "New submission for the planet: %s"
+msgstr "Новая заявка для планеты: %s"
+
+#: forms.py:24
+#, python-format
+msgid "%s: new submission"
+msgstr "%s: новая заявка"
+
+#: models.py:13 models.py:46
+msgid "title"
+msgstr ""
+
+#: models.py:14
+msgid "feed url"
+msgstr "адрес фида"
+
+#: models.py:15
+msgid "site url"
+msgstr "адрес сайта"
+
+#: models.py:16 models.py:53
+msgid "active"
+msgstr "активен"
+
+#: models.py:18
+msgid "last checked"
+msgstr "время последней проверки"
+
+#: models.py:19
+msgid "allow all messages"
+msgstr "разрешать все сообщения"
+
+#: models.py:20
+msgid "blog author"
+msgstr "автор блога"
+
+#: models.py:32 models.py:45
+msgid "feed"
+msgstr "фид"
+
+#: models.py:33
+msgid "feeds"
+msgstr "фиды"
+
+#: models.py:48
+msgid "summary"
+msgstr "введение"
+
+#: models.py:49
+msgid "content"
+msgstr "содержимое"
+
+#: models.py:50
+msgid "creation time"
+msgstr "время создания"
+
+#: models.py:51
+msgid "identifier"
+msgstr "идентификатор"
+
+#: models.py:60
+msgid "post"
+msgstr "публикация"
+
+#: models.py:61
+msgid "posts"
+msgstr "публикации"
+
+#: views.py:78
+#, python-format
+msgid "Your query is shorter than %d characters"
+msgstr "Ваш запрос короче %d символов"
+
+#: views.py:98
+msgid "Thanks, your submission has been accepted and will be reviewed by admin"
+msgstr "Спасибо. Ваша заявка принята и будет рассмотрена администратором сайта"

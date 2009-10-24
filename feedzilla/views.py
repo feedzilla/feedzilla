@@ -6,6 +6,7 @@ from django.conf import settings
 from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from django.db import connection
+from django.utils.translation import ugettext_lazy as _
 
 from common.decorators import render_to, paged
 from common.pagination import paginate
@@ -70,11 +71,11 @@ def sources(request):
 
 @render_to('feedzilla/search.html')
 def search(request):
-    query = request.GET.get('query', '') 
+    query = request.GET.get('query', '')
     min_limit = 2
     if len(query) < min_limit:
         posts = []
-        message = u'Ваш запрос короче %d символов' % min_limit
+        message = _('Your query is shorter than %d characters') % min_limit
     else:
         posts = Post.active_objects.filter(content__icontains=query)
         message = ''
@@ -94,7 +95,8 @@ def add_blog(request):
     success = None
     if form.is_valid():
         form.save()
-        success = u'Спасибо. Ваша заявка принята и будет рассмотрена администратором сайта'
+        success = _('Thanks, your submission has been accepted and will be '
+                    'reviewed by admin')
     return {'form': form,
             'success': success,
             }

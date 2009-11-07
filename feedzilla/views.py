@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from django.db import connection
 from django.utils.translation import ugettext_lazy as _
+from django.views.decorators.cache import cache_page
 
 from common.decorators import render_to, paged
 from common.pagination import paginate
@@ -18,6 +19,7 @@ from feedzilla import settings as app_settings
 from feedzilla.forms import AddBlogForm
 
 
+@cache_page
 @render_to('feedzilla/index.html')
 def index(request):
     qs = Post.active_objects.all().select_related('feed')
@@ -34,6 +36,7 @@ def index(request):
             }
 
 
+@cache_page
 @render_to('feedzilla/tag.html')
 def tag(request, tag_value):
     tag = get_object_or_404(Tag, name=tag_value)
@@ -46,6 +49,7 @@ def tag(request, tag_value):
             }
 
 
+@cache_page
 @render_to('feedzilla/sources.html')
 def sources(request):
 
@@ -89,6 +93,7 @@ def search(request):
             }
 
 
+@cache_page
 @render_to('feedzilla/submit_blog.html')
 def submit_blog(request):
     form = build_form(AddBlogForm, request)

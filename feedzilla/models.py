@@ -5,18 +5,19 @@ import re
 from django.db.models import permalink
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.utils.translation import ugettext_lazy as _
 
 from tagging.fields import TagField
 
 class Feed(models.Model):
-    title = models.CharField(u'Название', max_length=255)
-    feed_url = models.URLField(u'Адрес фида', unique=True, verify_exists=False)
-    site_url = models.URLField(u'Адрес сайта', verify_exists=False)
-    active = models.BooleanField(u'Активен', blank=True, default=True)
+    title = models.CharField(_('title'), max_length=255)
+    feed_url = models.URLField(_('feed url'), unique=True, verify_exists=False)
+    site_url = models.URLField(_('site url'), verify_exists=False)
+    active = models.BooleanField(_('active'), blank=True, default=True)
     etag = models.CharField(u'ETag', max_length=255, blank=True, default='')
-    last_checked = models.DateTimeField(u'Время пооследней проверки', blank=True, null=True)
-    skip_filters = models.BooleanField(u'Разрешать все сообщения', blank=True, default=False)
-    author = models.CharField('Автор блога', blank=True, max_length=255)
+    last_checked = models.DateTimeField(_('last checked'), blank=True, null=True)
+    skip_filters = models.BooleanField(_('allow all messages'), blank=True, default=False)
+    author = models.CharField(_('blog author'), blank=True, max_length=255)
 
     def __unicode__(self):
         return self.title
@@ -28,36 +29,36 @@ class Feed(models.Model):
         return urlsplit(self.site_url).hostname
 
     class Meta:
-        verbose_name = u'Фид'
-        verbose_name_plural = u'Фиды'
+        verbose_name = _('feed')
+        verbose_name_plural = _('feeds')
 
     def author_or_title(self):
         return self.author or self.title
 
-   
+
 class ActivePostManager(models.Manager):
     def get_query_set(self):
         return super(ActivePostManager, self).get_query_set().filter(active=True)
 
 
 class Post(models.Model):
-    feed = models.ForeignKey(Feed, verbose_name=u'Фид', related_name='posts')
-    title = models.CharField(u'Заголовок', max_length=255)
-    link = models.TextField(u'Ссылка')
-    summary = models.TextField(u'Введение', blank=True)
-    content = models.TextField(u'Содержимое', blank=True)
-    created = models.DateTimeField(u'Время создания')
-    guid = models.CharField(u'Идентификатор', max_length=255, unique=True)
+    feed = models.ForeignKey(Feed, verbose_name=_('feed'), related_name='posts')
+    title = models.CharField(_('title'), max_length=255)
+    link = models.TextField(_('link'))
+    summary = models.TextField(_('summary'), blank=True)
+    content = models.TextField(_('content'), blank=True)
+    created = models.DateTimeField(_('creation time'))
+    guid = models.CharField(_('identifier'), max_length=255, unique=True)
     tags = TagField()
-    active = models.BooleanField(u'Активен', blank=True, default=True)
+    active = models.BooleanField(_('active'), blank=True, default=True)
 
     objects = models.Manager()
     active_objects = ActivePostManager()
 
     class Meta:
         ordering = ['-created']
-        verbose_name = u'Публикация'
-        verbose_name_plural = u'Публикации'
+        verbose_name = _('post')
+        verbose_name_plural = _('posts')
 
     def __unicode__(self):
         return self.title

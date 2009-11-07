@@ -15,11 +15,11 @@ class AddBlogForm(forms.Form):
         except Request.DoesNotExist:
             return value
         else:
-            raise forms.ValidationError(u'Заявка для этого адреса уже была отправлена')
+            raise forms.ValidationError(_('This address has been already submitted.'))
 
     def save(self):
         url = self.cleaned_data['url']
         obj = Request.objects.create(url=url)
-        body = u'Новая заявка для планеты: %s' % url
-        mail_admins(u'%s: новая заявка' % app_settings.SITE_TITLE, body)
+        body = _('New submission for the planet: %s') % url
+        mail_admins(_('%s: new submission') % app_settings.SITE_TITLE, body)
         return obj

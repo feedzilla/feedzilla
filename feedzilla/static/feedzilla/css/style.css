@@ -1,0 +1,285 @@
+body {
+    text-align: center;
+    background-color: #FFF9E9;
+    font-size: 0.9em;
+    line-height: 1.3em;
+    font-family: "Georgia", "Times New Roman", serif;
+    color: #333;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+a {
+    color: #B96D00;
+    text-decoration: underline;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.site-base {
+    width: 900px;
+    margin: 30px auto 30px;
+    background-color: white;
+    padding: 7px;
+    border: 1px solid #E9E1CD;
+    text-align: left;
+}
+
+.site-head {
+    background-color: #2B2B2B;
+}
+
+.site-head, .site-head a, .site-head a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.site-head .inner {
+    padding: 1em;
+}
+
+.site-head .logo {
+    width: 50%;
+    float: left;
+}
+
+.site-head .right {
+    width: 49%;
+    float: right;
+    text-align: right;
+}
+
+.site-head h2 {
+    font-size: 1.9em;
+    font-weight: normal;
+}
+
+.site-head .site-description {
+    color: #aaa;
+    margin-top: 0.5em;
+}
+
+.search-form {
+    margin-top: 0.5em;
+}
+
+.search-form #id_query {
+    border: none;
+    padding-left: 0.1em;
+    margin-right: 0.5em;
+}
+
+.search-form .submit {
+    border: none;
+    background-color: #939B00;
+    color: white;
+}
+
+.site-navigation {
+    padding: 1em 1em;
+    margin-top: 0.2em;
+    background-color: #7F8400;
+}
+
+.site-navigation a {
+    color: white;
+    text-decoration: none;
+}
+
+.site-navigation a:hover {
+    text-decoration: underline;
+}
+
+.site-navigation li {
+    display: inline;
+    margin-right: 1.3em;
+}
+
+.site-head-bottom {
+    height: 14px;
+    background: repeat-x url(../img/border2.gif); 
+    margin-top: 0.2em;
+}
+
+.site-footer {
+    margin-top: 1em;
+}
+
+.site-body {
+    margin-top: 1em;
+}
+
+.site-content {
+    width: 650px;
+    float: left;
+}
+
+.site-content .inner {
+    margin: 0 1em 0 1.5em;
+}
+
+.site-sidebar {
+    width: 250px;
+    float: left;
+}
+
+.site-sidebar .inner {
+    margin: 0 0.5em;
+}
+
+.box {
+    margin-bottom: 1em;
+}
+
+.box h4 {
+    font-size: 1.3em;
+    margin: 0 0 1em;
+}
+
+.pagination {
+    margin: 1em 0;
+}
+
+.clear {
+    clear: both;
+}
+
+.external {
+    padding-right: 1em;
+    background: no-repeat 100% url(../img/external.png);
+}
+
+.post {
+    padding-bottom: 2em;
+    border-bottom: 1px solid #EAEAEA;
+    margin-bottom: 2em;
+}
+
+.post h3 {
+    position: relative;
+    left: -20px;
+    font-size: 1.5em;
+    font-weight: normal;
+}
+
+.post h4 {
+    font-size: 1.2em;
+    font-weight: normal;
+    margin-top: 0.5em;
+}
+
+.post h3 a, .post h4 a {
+    text-decoration: none;
+}
+
+.post .content {
+    margin-top: 1em;
+    overflow: hidden;
+}
+
+.post .details {
+    margin-top: 1em;
+}
+
+.post .details li {
+    display: inline;
+    font-size: 0.8em;
+    margin-right: 1em;
+}
+
+.post .details .tags a {
+    margin-right: 0.5em;
+}
+
+.site-footer {
+    margin-top: 2em;
+}
+
+.site-footer .inner {
+    margin: 1em;
+    font-size: 0.8em;
+}
+
+.site-footer .left {
+    float: left;
+    width: 50%;
+}
+
+.site-footer .right {
+    float: left;
+    width: 50%;
+    text-align: right;
+}
+
+.tag-cloud {
+    text-align: center;
+}
+
+.tag-cloud a {
+    margin-right: 0.5em;
+    text-decoration: none;
+}
+
+.tag-cloud a:hover {
+    text-decoration: underline;
+}
+
+.tag-cloud .size-1 {
+    font-size: 1em;
+}
+
+.tag-cloud .size-2 {
+    font-size: 1.2em;
+}
+
+.tag-cloud .size-3 {
+    font-size: 1.4em;
+}
+
+.tag-cloud .size-4 {
+    font-size: 1.8em;
+}
+
+code {
+    padding-left: 0.3em;
+}
+
+pre, code.block {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    border: 1px solid #FFD452;
+    background-color: #FFE38F;
+    padding: 0.5em;
+}
+
+.common-form input, .common-form textarea {
+    display: block;
+}
+
+.common-form {
+    margin: 1em 0;
+}
+
+.common-form label {
+    font-weight: bold;
+}
+
+.errorlist li {
+    list-style-type: none;
+    color: red;
+}
+
+.add-blog img {
+    position: relative;
+    top: 3px;
+}

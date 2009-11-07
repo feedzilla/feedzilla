@@ -17,7 +17,7 @@ from feedzilla import settings as app_settings
 from feedzilla.forms import AddBlogForm
 
 
-@render_to('index.html')
+@render_to('feedzilla/index.html')
 def index(request):
     qs = Post.active_objects.all().select_related('feed')
 

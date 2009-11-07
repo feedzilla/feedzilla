@@ -8,10 +8,10 @@
     <h4 class="title">
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
     </h4>
-    <div class="contentarea">
+    <div class="content">
         <p>{{ post.content|safe }}</p>
         <div class="details">
-            <ul class="controls">
+            <ul>
                 <li><span title="Дата публикации">{{ post.created|date:"d M H:i" }}</span></li>
                 {% if post.tags %}<li><span class="tags" title="Метки публикации">
                     {% tags_for_object post as tags %}

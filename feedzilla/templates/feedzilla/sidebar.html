@@ -1,0 +1,19 @@
+{% load feedzilla_tags %}
+
+<div class="box">
+    {% if FEEDZILLA_FEEDBURNER_COUNTER %}
+    {{ FEEDZILLA_FEEDBURNER_COUNTER|safe }}
+    <div class="add-blog">
+        <img src="{{ MEDIA_URL }}feedzilla/img/add.png" />
+        <a href="{% url feedzilla_add_blog %}">Добавить блог</a>
+    </div>
+    {% endif %}
+</div>
+
+<div class="box">
+    <h4>Метки</h4>
+    <div class="tag-cloud">
+    {% feedzilla_tag_cloud %}
+    </div>
+</div>
+

@@ -1,8 +1,6 @@
 {% load feedzilla_tags %}
 <div class="tag-cloud">
 {% for tag in tags %}
-<font size="{{ tag.font_size }}">
-    <a class="tag" href="{% url feedzilla_tag tag %}" size="{{ tag.font_size }}">{{ tag|escape|feedzilla_strong_spaces }}</a>
-</font>
+<a class="tag size-{{ tag.font_size }}" href="{% url feedzilla_tag tag %}">{{ tag|escape|feedzilla_strong_spaces }}</a>
 {% endfor %}
 </div>

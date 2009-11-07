@@ -18,10 +18,12 @@ class FeedAdmin(admin.ModelAdmin):
     def admin_feed_url(self, obj):
         return html_link(obj.feed_url)
     admin_feed_url.allow_tags = True
+    admin_feed_url.short_description = _('Feed link')
 
     def admin_site_url(self, obj):
         return html_link(obj.site_url)
     admin_site_url.allow_tags = True
+    admin_site_url.short_description = _('Site link')
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'feed', 'created', 'active',
@@ -32,6 +34,7 @@ class PostAdmin(admin.ModelAdmin):
     def admin_post_link(self, obj):
         return html_link(obj.link)
     admin_post_link.allow_tags = True
+    admin_post_link.short_description = _('Post link')
 
 class FilterTagAdmin(admin.ModelAdmin):
     list_display = ['value']

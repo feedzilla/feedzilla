@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-10-24 23:22+0600\n"
+"POT-Creation-Date: 2009-11-07 23:38+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,9 +15,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: admin.py:8 models.py:47
+#: admin.py:10 models.py:47
 msgid "link"
 msgstr "ссылка"
+
+#: admin.py:21
+msgid "Feed link"
+msgstr "Ссылка на фид"
+
+#: admin.py:26
+msgid "Site link"
+msgstr "Ссылка на сайт"
+
+#: admin.py:37
+msgid "Post link"
+msgstr "Ссылка на публикацию"
 
 #: forms.py:18
 msgid "This address has been already submitted."
@@ -35,7 +47,7 @@ msgstr "%s: новая заявка"
 
 #: models.py:13 models.py:46
 msgid "title"
-msgstr ""
+msgstr "заголовок"
 
 #: models.py:14
 msgid "feed url"
@@ -92,6 +104,46 @@ msgstr "публикация"
 #: models.py:61
 msgid "posts"
 msgstr "публикации"
+
+#: models.py:72 models.py:84
+msgid "Value"
+msgstr "Значение"
+
+#: models.py:73 models.py:85
+msgid "Exact match"
+msgstr "Точное совпадение"
+
+#: models.py:79
+msgid "Filter tag"
+msgstr "Тэг-фильтр"
+
+#: models.py:80
+msgid "Filter tags"
+msgstr "Тэги-фильтры"
+
+#: models.py:91
+msgid "Filter word"
+msgstr "Слово-фильтр"
+
+#: models.py:92
+msgid "Filter words"
+msgstr "Слова-фильтры"
+
+#: models.py:96
+msgid "Site URL"
+msgstr "Адрес сайта"
+
+#: models.py:97
+msgid "Creation date"
+msgstr "Время создания"
+
+#: models.py:104
+msgid "Request"
+msgstr "Запрос"
+
+#: models.py:105
+msgid "Requests"
+msgstr "Запросы"
 
 #: views.py:78
 #, python-format

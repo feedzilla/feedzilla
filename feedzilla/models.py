@@ -69,30 +69,40 @@ class Post(models.Model):
 
 
 class FilterTag(models.Model):
-    value = models.CharField(max_length=255, unique=True)
-    exact = models.BooleanField(blank=True, default=False)
+    value = models.CharField(_('Value'), max_length=255, unique=True)
+    exact = models.BooleanField(_('Exact match'), blank=True, default=False)
 
     def __unicode__(self):
         return self.value
+
+    class Meta:
+        verbose_name = _('Filter tag')
+        verbose_name_plural = _('Filter tags')
 
 
 class FilterWord(models.Model):
-    value = models.CharField(max_length=255, unique=True)
-    exact = models.BooleanField(blank=True, default=False)
+    value = models.CharField(_('Value'), max_length=255, unique=True)
+    exact = models.BooleanField(_('Exact match'), blank=True, default=False)
 
     def __unicode__(self):
         return self.value
 
+    class Meta:
+        verbose_name = _('Filter word')
+        verbose_name_plural = _('Filter words')
+
 
 class Request(models.Model):
-    url = models.CharField(max_length=255, unique=True)
-    created = models.DateTimeField(auto_now_add=True)
+    url = models.CharField(_('Site URL'), max_length=255, unique=True)
+    created = models.DateTimeField(_('Creation date'), auto_now_add=True)
 
     def __unicode__(self):
         return self.url
 
     class Meta:
         ordering = ['-created']
+        verbose_name = _('Request')
+        verbose_name_plural = _('Requests')
 
 
 from feedzilla import signals

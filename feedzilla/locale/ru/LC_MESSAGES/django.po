@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2009-11-07 23:38+0600\n"
+"POT-Creation-Date: 2009-11-08 02:30+0600\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -153,3 +153,92 @@ msgstr "Ваш запрос короче %d символов"
 #: views.py:98
 msgid "Thanks, your submission has been accepted and will be reviewed by admin"
 msgstr "Спасибо. Ваша заявка принята и будет рассмотрена администратором сайта"
+
+#: templates/404.html:4
+msgid "Requested page was not found. Try to look <a href='/'>home page</a>"
+msgstr ""
+"Запрашиваемая страница не найдена. Попробуйте посмотреть <a href='/'>главную "
+"страницу</a>"
+
+#: templates/500.html:2
+msgid ""
+"Something failed. Administrator has been notified. Try to look <a "
+"href='/'>home page</a>."
+msgstr ""
+"Произошла ошибка. Администратор был извещён. Попробуйте посмотреть <a "
+"href='/'>главную страницу</a>."
+
+#: templates/base.html:26
+msgid "ATOM feed"
+msgstr "ATOM фид"
+
+#: templates/base.html:31
+msgid "Search"
+msgstr "Поиск"
+
+#: templates/base.html:39
+msgid "News stream"
+msgstr "Лента новостей"
+
+#: templates/base.html:40 templates/feedzilla/sources.html:5
+msgid "Sources"
+msgstr "Источники"
+
+#: templates/footer.html:5
+msgid "Powered by"
+msgstr "Работает на"
+
+#: templates/common/pagination.html:6
+msgid "Later"
+msgstr "Позже"
+
+#: templates/common/pagination.html:9
+#, python-format
+msgid ""
+"Posts <strong>%(start)s</strong>&mdash;<strong>%(end)s</strong> from <strong>"
+"%(count)s"
+msgstr ""
+"Публикации <strong>%(start)s</strong>&mdash;<strong>%(end)s</strong> из "
+"<strong>%(count)s"
+
+#: templates/common/pagination.html:13
+msgid "Earlier"
+msgstr "Раньше"
+
+#: templates/feedzilla/post_template.html:16
+msgid "Date of publication"
+msgstr "Дата публикации"
+
+#: templates/feedzilla/post_template.html:17
+msgid "Labels of post"
+msgstr "Метки публикации"
+
+#: templates/feedzilla/search.html:19
+#, python-format
+msgid "Search for &laquo;%(query)s&raquo;"
+msgstr "Поиск по запросу &laquo;%(query)s&raquo;"
+
+#: templates/feedzilla/search.html:27
+msgid "Nothing was found"
+msgstr "Ничего не найдено"
+
+#: templates/feedzilla/sidebar.html:8 templates/feedzilla/submit_blog.html:5
+msgid "Submit a blog"
+msgstr "Предложить блог"
+
+#: templates/feedzilla/sidebar.html:14
+msgid "Labels"
+msgstr "Метки"
+
+#: templates/feedzilla/submit_blog.html:11
+msgid "Submit"
+msgstr "Отправить"
+
+#: templates/feedzilla/tag.html:5
+#, python-format
+msgid "Posts with &laquo;%(tag)s&raquo; label"
+msgstr "Публикации с меткой &laquo;%(tag)s&raquo;"
+
+#: templates/feedzilla/tag.html:12
+msgid "No posts with such label"
+msgstr "Публикаций с такой меткой не найдено"

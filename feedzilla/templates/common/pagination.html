@@ -1,14 +1,16 @@
+{% load i18n %}
+
 <div class="pagination">
 
     {% if page.has_previous %}
-    <a href="?page={{ page.previous_page_number }}">&lt;Позже</a>
+    <a href="?page={{ page.previous_page_number }}">&lt;{% trans "Later" %}</a>
     {% endif %}
 
-    <span class="summary">Записи <strong>{{ page.start_index }}</strong>&mdash;<strong>{{ page.end_index }}</strong> из <strong>{{ paginator.count }}</strong>
+    <span class="summary">{% blocktrans with page.start_index as start and page.end_index as end and paginator.count as count %}Posts <strong>{{ start }}</strong>&mdash;<strong>{{ end }}</strong> from <strong>{{ count }}{% endblocktrans %}</strong>
     </span>
 
     {% if page.has_next %}
-    <a href="?page={{ page.next_page_number }}">Раньше&gt;</a>
+    <a href="?page={{ page.next_page_number }}">{% trans "Earlier" %}&gt;</a>
     {% endif %}
 
 

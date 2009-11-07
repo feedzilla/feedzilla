@@ -1,4 +1,5 @@
 {% load tagging_tags %}
+{% load i18n %}
 
 <div class="post">
     <h3 class="author">
@@ -9,17 +10,15 @@
         <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
     </h4>
     <div class="content">
-        <p>{{ post.content|safe }}</p>
-        <div class="details">
-            <ul>
-                <li><span title="Дата публикации">{{ post.created|date:"d M H:i" }}</span></li>
-                {% if post.tags %}<li><span class="tags" title="Метки публикации">
-                    {% tags_for_object post as tags %}
-                    {% for tag in tags %}<a href="{% url feedzilla_tag tag.name %}">{{ tag }}</a>{% endfor %}
-                </li>{% endif %}
-            </ul>
-        </div>
+        {{ post.content|safe }}
+    </div>
+    <div class="details">
+        <ul>
+            <li><span title="{% trans "Date of publication" %}">{{ post.created|date:"d M H:i" }}</span></li>
+            {% if post.tags %}<li><span class="tags" title="{% trans "Labels of post" %}">
+                {% tags_for_object post as tags %}
+                {% for tag in tags %}<a href="{% url feedzilla_tag tag.name %}">{{ tag }}</a>{% endfor %}
+            </li>{% endif %}
+        </ul>
     </div>
 </div>
-
-<div class="divider2"></div>

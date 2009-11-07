@@ -1,6 +1,8 @@
+{% load i18n %}
+
 <div class="left">
     {{ FEEDZILLA_COPYRIGHTS|safe }} <br/>
-    Powered by <a href="http://bitbucket.org/lorien/feedzilla">Feedzilla</a> <br/>
+    {% trans "Powered by" %} <a href="http://bitbucket.org/lorien/feedzilla">Feedzilla</a> <br/>
 </div>
 <div class="right">
     <a href="http://www.djangoproject.com/"><img src="http://media.djangoproject.com/img/badges/djangosite80x15.gif" border="0" alt="A Django site." title="A Django site." /></a>

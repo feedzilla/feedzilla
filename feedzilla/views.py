@@ -89,8 +89,8 @@ def search(request):
             }
 
 
-@render_to('feedzilla/add_blog.html')
-def add_blog(request):
+@render_to('feedzilla/submit_blog.html')
+def submit_blog(request):
     form = build_form(AddBlogForm, request)
     success = None
     if form.is_valid():

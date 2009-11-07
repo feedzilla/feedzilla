@@ -1,13 +1,14 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block content %}
-<h1>Заявка на добавление нового блога</h1>
+<h1>{% trans "Submit a blog" %}</h1>
 {% if success %}
 <p>{{ success }}</p>
 {% else %}
 <form method="post" class="common-form">
     {{ form.as_p }}
-    <p><input type="submit" value="Отправить" /></p>
+    <p><input type="submit" value="{% trans "Submit" %}" /></p>
 </form>
 {% endif %}
 {% endblock %}

@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
+{% load i18n %}
 
 {% block head_extra %}
-<script type="text/javascript" src="{{ MEDIA_URL }}/js/jquery.highlight-2.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}feedzilla/js/jquery.highlight-2.js"></script>
 <script type="text/javascript">
 $(function() {
     var query = '{{ query.upper|addslashes|safe }}';
-    $('.post .contentarea p').each(function() {
+    $('.post .content').each(function() {
         $.highlight(this, query);
     });
 });
@@ -15,7 +16,8 @@ $(function() {
 {% block query_value %}{{ query }}{% endblock %}
 
 {% block content %}
-<h2>{% block title %}Поиск по запросу &laquo;{{ query }}&raquo;{% endblock %}</h2>
+<h1>{% block title %}{% blocktrans %}Search for &laquo;{{ query }}&raquo;{% endblocktrans %}{% endblock %}</h1>
+
 <div class="divider2"></div>
 {% if page.object_list %}
     {% for post in page.object_list %}
@@ -23,7 +25,6 @@ $(function() {
     {% endfor %}
     {% include "common/pagination.html" %}
 {% else %}
-    <p>{% if message %}{{ message }}{% else %}
-    По вашему запросу ничего не найдено.{% endif %}</p>
+    <p>{% if message %}{{ message }}{% else %}{% trans "Nothing was found" %}{% endif %}</p>
 {% endif %}
 {% endblock %}

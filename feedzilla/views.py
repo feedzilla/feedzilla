@@ -9,7 +9,7 @@ from django.db import connection
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import cache_page
 
-from common.decorators import render_to, paged
+from common.decorators import render_to
 from common.pagination import paginate
 from common.forms import build_form
 from tagging.models import Tag, TaggedItem
@@ -24,10 +24,9 @@ from feedzilla.forms import AddBlogForm
 def index(request):
     qs = Post.active_objects.all().select_related('feed')
 
-    page, paginator = paginate(qs, request, app_settings.PAGE_SIZE)
+    page = paginate(qs, request, app_settings.PAGE_SIZE)
 
     return {'page': page,
-            'paginator': paginator,
             }
 
 
@@ -36,11 +35,10 @@ def index(request):
 def tag(request, tag_value):
     tag = get_object_or_404(Tag, name=tag_value)
     qs = TaggedItem.objects.get_by_model(Post, tag).filter(active=True).order_by('-created')
-    page, paginator = paginate(qs, request, app_settings.PAGE_SIZE)
+    page = paginate(qs, request, app_settings.PAGE_SIZE)
 
     return {'tag': tag,
             'page': page,
-            'paginator': paginator
             }
 
 
@@ -79,10 +77,9 @@ def search(request):
         posts = Post.active_objects.filter(content__icontains=query)
         message = ''
 
-    page, paginator = paginate(posts, request, app_settings.PAGE_SIZE)
+    page = paginate(posts, request, app_settings.PAGE_SIZE)
 
     return {'page': page,
-            'paginator': paginator,
             'message': message,
             'query': query,
             }

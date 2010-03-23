@@ -19,6 +19,10 @@
                 {% tags_for_object post as tags %}
                 {% for tag in tags %}<a href="{% url feedzilla_tag tag.name %}">{{ tag }}</a>{% endfor %}
             </li>{% endif %}
+            <li class="social-bookmarks">
+                {% load bookmarker_tags %}
+                {% bookmark_links post.get_absolute_url post.title %}
+            </li>
         </ul>
     </div>
 </div>

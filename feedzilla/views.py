@@ -24,11 +24,6 @@ from feedzilla.forms import AddBlogForm
 def index(request):
     qs = Post.active_objects.all().select_related('feed')
 
-    # TODO: Remove it!
-    host = request.GET.get('host')
-    if host:
-        qs = qs.filter(feed__site_url__icontains=host)
-
     page, paginator = paginate(qs, request, app_settings.PAGE_SIZE)
 
     return {'page': page,

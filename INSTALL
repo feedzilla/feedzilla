@@ -18,3 +18,4 @@ Dependencies
  * django-common
  * django-tagging
  * feedparser
+ * django-bookmarker

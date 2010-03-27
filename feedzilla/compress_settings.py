@@ -9,7 +9,7 @@ COMPRESS_JS = {
     'common_scripts': {
         'source_filenames': ('feedzilla/js/jquery.js', 'feedzilla/js/fix_tags.js',
                              'feedzilla/js/jquery.highlight-2.js'),
-        'output_filename': 'js/common_styles.r?.js',
+        'output_filename': 'js/common_scripts.r?.js',
     }
 }
 COMPRESS_VERSION = True

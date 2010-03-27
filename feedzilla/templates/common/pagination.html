@@ -6,7 +6,7 @@
     <a href="?page={{ page.previous_page_number }}">&lt;{% trans "Later" %}</a>
     {% endif %}
 
-    <span class="summary">{% blocktrans with page.start_index as start and page.end_index as end and paginator.count as count %}Posts <strong>{{ start }}</strong>&mdash;<strong>{{ end }}</strong> from <strong>{{ count }}{% endblocktrans %}</strong>
+    <span class="summary">{% blocktrans with page.start_index as start and page.end_index as end and page.paginator.count as count %}Posts <strong>{{ start }}</strong>&mdash;<strong>{{ end }}</strong> from <strong>{{ count }}{% endblocktrans %}</strong>
     </span>
 
     {% if page.has_next %}

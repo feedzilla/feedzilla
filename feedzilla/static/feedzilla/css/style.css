@@ -171,6 +171,10 @@ a:hover {
     font-weight: normal;
 }
 
+.post .content .h3 {
+    position: static;
+}
+
 .post h4 {
     font-size: 1.2em;
     font-weight: normal;
@@ -282,4 +286,8 @@ pre, code.block {
 .add-blog img {
     position: relative;
     top: 3px;
+}
+
+.highlight {
+    background-color: yellow;
 }

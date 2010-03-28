@@ -11,17 +11,4 @@ Project page: http://bitbucket.org/lorien/feedzilla
 
 Installation
 ============
-For installation instructions look into INSTALL document.
-
-
-Settings 
-========
-
- * FEEDZILLA_PAGE_SIZE
- * FEEDZILLA_SUMMARY_SIZE
- * FEEDZILLA_SITE_TITLE
- * FEEDZILLA_SITE_DESCRIPTION
- * FEEDZILLA_HEAD_LINKS
- * FEEDZILLA_COPYRIGHTS
-
-For actual list look into feedzilla/settings.py
+For installation instructions and list of settings look into INSTALL document.

@@ -8,14 +8,13 @@ from django.utils.feedgenerator import Atom1Feed
 from django.conf import settings
 
 from feedzilla.models import Post
-from feedzilla import settings as app_settings
 
 
 class PostFeed(Feed):
     feed_type = Atom1Feed
     link = '/'
-    title = app_settings.SITE_TITLE
-    subtitle = app_settings.SITE_DESCRIPTION
+    title = settings.FEEDZILLA_SITE_TITLE
+    subtitle = settings.FEEDZILLA_SITE_DESCRIPTION
 
     #def item_link(self, obj):
         #return obj.get_imdb_link()
@@ -25,7 +24,7 @@ class PostFeed(Feed):
 
     def items(self, obj):
         return Post.active_objects.all()\
-                   .order_by('-created')[:app_settings.PAGE_SIZE]
+                   .order_by('-created')[:settings.FEEDZILLA_PAGE_SIZE]
 
     def item_pubdate(self, obj):
         return obj.created

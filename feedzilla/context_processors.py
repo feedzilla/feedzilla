@@ -1,8 +1,10 @@
 from django.conf import settings
 
-from feedzilla import settings as app_settings
+KEYS = ('FEEDZILLA_SITE_TITLE', 'FEEDZILLA_SITE_DESCRIPTION',
+        'FEEDZILLA_HEAD_LINKS', 'FEEDZILLA_COPYRIGHTS',
+        'FEEDZILLA_FEEDBURNER_FEED', 'FEEDZILLA_FEEDBURNER_COUNTER',
+        'FEEDZILLA_TWITTER')
+CONTEXT = dict((x, getattr(settings, x)) for x in KEYS)
 
-def feed(request):
-    keys = ('SITE_TITLE', 'SITE_DESCRIPTION', 'HEAD_LINKS',
-            'COPYRIGHTS', 'FEEDBURNER_FEED', 'FEEDBURNER_COUNTER')
-    return dict(('FEEDZILLA_%s' % x, getattr(app_settings, x)) for x in keys)
+def settings(request):
+    return CONTEXT

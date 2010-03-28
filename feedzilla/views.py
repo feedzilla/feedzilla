@@ -15,7 +15,6 @@ from common.forms import build_form
 from tagging.models import Tag, TaggedItem
 
 from feedzilla.models import Post, Feed
-from feedzilla import settings as app_settings
 from feedzilla.forms import AddBlogForm
 
 
@@ -24,7 +23,7 @@ from feedzilla.forms import AddBlogForm
 def index(request):
     qs = Post.active_objects.all().select_related('feed')
 
-    page = paginate(qs, request, app_settings.PAGE_SIZE)
+    page = paginate(qs, request, settings.FEEDZILLA_PAGE_SIZE)
 
     return {'page': page,
             }
@@ -35,7 +34,7 @@ def index(request):
 def tag(request, tag_value):
     tag = get_object_or_404(Tag, name=tag_value)
     qs = TaggedItem.objects.get_by_model(Post, tag).filter(active=True).order_by('-created')
-    page = paginate(qs, request, app_settings.PAGE_SIZE)
+    page = paginate(qs, request, settings.FEEDZILLA_PAGE_SIZE)
 
     return {'tag': tag,
             'page': page,
@@ -77,7 +76,7 @@ def search(request):
         posts = Post.active_objects.filter(content__icontains=query)
         message = ''
 
-    page = paginate(posts, request, app_settings.PAGE_SIZE)
+    page = paginate(posts, request, settings.FEEDZILLA_PAGE_SIZE)
 
     return {'page': page,
             'message': message,

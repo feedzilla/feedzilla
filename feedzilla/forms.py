@@ -2,9 +2,9 @@
 from django import forms
 from django.core.mail import mail_admins
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from feedzilla.models import Request
-from feedzilla import settings as app_settings
 
 class AddBlogForm(forms.Form):
     url = forms.URLField(label=_('Site URL'))
@@ -22,5 +22,5 @@ class AddBlogForm(forms.Form):
         url = self.cleaned_data['url']
         obj = Request.objects.create(url=url)
         body = _('New submission for the planet: %s') % url
-        mail_admins(_('%s: new submission') % app_settings.SITE_TITLE, body)
+        mail_admins(_('%s: new submission') % settings.FEEDZILLA_SITE_TITLE, body)
         return obj

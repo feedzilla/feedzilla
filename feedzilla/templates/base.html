@@ -20,8 +20,13 @@
                     <div class="site-description">{{ FEEDZILLA_SITE_DESCRIPTION }}</div>
                 </div>
                 <div class="right">
-                    <div class="site-feed">
-                        <a href="{% if FEEDZILLA_FEEDBURNER_FEED %}{{ FEEDZILLA_FEEDBURNER_FEED }}{% else %}{% url feedzilla_feed "posts" %}{% endif %}">
+                    <div class="site-updates">
+                        {% if FEEDZILLA_TWITTER %}
+                        <a href="http://twitter.com/{{ FEEDZILLA_TWITTER }}" class="twitter-link">
+                            <img src="{{ MEDIA_URL }}feedzilla/img/twitter.png" alt="{% trans "Twitter updates" %}" />
+                        </a>
+                        {% endif %}
+                        <a href="{% if FEEDZILLA_FEEDBURNER_FEED %}{{ FEEDZILLA_FEEDBURNER_FEED }}{% else %}{% url feedzilla_feed "posts" %}{% endif %}" class="feed-link">
                             <img src="{{ MEDIA_URL }}feedzilla/img/feed-icon-big.png" alt="{% trans "ATOM feed" %}" />
                         </a>
                     </div>

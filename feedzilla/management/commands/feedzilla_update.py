@@ -18,7 +18,7 @@ class Command(BaseCommand):
             logging.debug('parsing %s' % feed.feed_url)
 
             resp = parse_feed(feed.feed_url, etag=feed.etag,
-                              summary_size=settings.SUMMARY_SIZE)
+                              summary_size=settings.FEEDZILLA_SUMMARY_SIZE)
             if not resp['success']:
                 logging.debug('Failure')
             else:

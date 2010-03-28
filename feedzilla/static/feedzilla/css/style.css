@@ -283,6 +283,10 @@ pre, code.block {
     color: red;
 }
 
+.add-blog {
+    margin-top: 10px;
+}
+
 .add-blog img {
     position: relative;
     top: 3px;
@@ -296,4 +300,10 @@ pre, code.block {
     position: relative;
     top: 2px;
     padding-right: 5px;
+}
+
+.pop-button {
+    float: left;
+    width: 45%;
+    margin-right: 4.5%;
 }

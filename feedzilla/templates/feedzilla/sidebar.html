@@ -2,12 +2,20 @@
 
 <div class="box">
     {% if FEEDZILLA_FEEDBURNER_COUNTER %}
-    {{ FEEDZILLA_FEEDBURNER_COUNTER|safe }}
+    <div class="pop-button">{{ FEEDZILLA_FEEDBURNER_COUNTER|safe }}</div>
+    {% endif %}
+    {% if FEEDZILLA_TWITTER_COUNTER %}
+    <div class="pop-button">
+    <a href="http://twitter.com/{{ FEEDZILLA_TWITTER }}">
+        <img src="http://twittercounter.com/counter/?username={{ FEEDZILLA_TWITTER }}" />
+    </a>
+    </div>
+    {% endif %}
+    <div class="clear"></div>
     <div class="add-blog">
         <img src="{{ MEDIA_URL }}feedzilla/img/add.png" />
         <a href="{% url feedzilla_submit_blog %}">{% trans "Submit a blog" %}</a>
     </div>
-    {% endif %}
 </div>
 
 <div class="box">

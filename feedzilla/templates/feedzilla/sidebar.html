@@ -12,16 +12,20 @@
     </div>
     {% endif %}
     <div class="clear"></div>
+
+    {% if FEEDZILLA_SUBMIT_SITE_BLOCK %}
     <div class="add-blog">
         <img src="{{ MEDIA_URL }}feedzilla/img/add.png" />
         <a href="{% url feedzilla_submit_blog %}">{% trans "Submit a blog" %}</a>
     </div>
+    {% endif %}
 </div>
 
+{% if FEEDZILLA_TAG_CLOUD %}
 <div class="box">
     <h4>{% trans "Labels" %}</h4>
     <div class="tag-cloud">
     {% feedzilla_tag_cloud %}
     </div>
 </div>
-
+{% endif %}

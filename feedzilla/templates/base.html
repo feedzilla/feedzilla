@@ -1,4 +1,4 @@
-{% load i18n compressed %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+{% load i18n %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
     <title>{% block title %}{{ FEEDZILLA_SITE_TITLE }}{% endblock %}</title>
@@ -7,8 +7,11 @@
     <meta name="description" content="{% block meta_description %}{% endblock %}" />
     <link rel="alternate" type="application/atom+xml" href="{% if FEEDZILLA_FEEDBURNER_FEED %}{{ FEEDZILLA_FEEDBURNER_FEED }}{% else %}{% url feedzilla_feed "posts" %}{% endif %}" title="{{ FEEDZILLA_SITE_TITLE }}" />
 
-    {% compressed_css "common_styles" %}
-    {% compressed_js "common_scripts" %}
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}feedzilla/css/reset.css" />
+    <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}feedzilla/css/style.css" />
+    <script type="text/javascript" href="{{ MEDIA_URL }}feedzilla/js/jquery"></script>
+    <script type="text/javascript" href="{{ MEDIA_URL }}feedzilla/js/fix_tags.js"></script>
+    <script type="text/javascript" href="{{ MEDIA_URL }}feedzilla/js/jquery.highlight-2.js"></script>
     {% block extra_js %}{% endblock %}
 </head>
 <body>
@@ -31,7 +34,7 @@
                         </a>
                     </div>
                     <form class="search-form" action="{% url feedzilla_search %}" method="get">
-                        <input id="id_query" type="text" maxlength="64" name="query" value="{% block query_value %}{% endblock %}" />
+                        <input id="id_query" type="text" maxlength="64" name="query" value="{% block feedzilla_query_value %}{% endblock %}" />
                         <input type="submit" class="submit" value="{% trans "Search" %}" />
                     </form>
                 </div>
@@ -58,8 +61,8 @@
             </div>
             <div class="site-sidebar">
                 <div class="inner">
-                    {% include "feedzilla/sidebar.html" %}
-                    {% include "feedzilla/sidebar_extra.html" %}
+                    {% include "feedzilla/_sidebar.html" %}
+                    {% include "feedzilla/_sidebar_extra.html" %}
                 </div>
             </div>
             <div class="clear"></div>

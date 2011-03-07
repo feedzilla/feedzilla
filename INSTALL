@@ -2,21 +2,16 @@
 Installation
 ============
 
- * pip or easy_install feedzilla
- * Make sure you have install all dependencies
+ * Use pip or easy_install to install "feedzilla" package
+ * Install dependencies (see below)
  * Add feedzilla to INSTALLED_APPS
- * Run `manage.py syncdb`
- * Add `url('', include('feedzilla.urls'))` into root urls.py
+ * Run `manage.py syncdb` or `manage.py sync` if you use South.
+ * Include `url('', include('feedzilla.urls'))` in url config
  * Add `feedzilla.context_processors.settings` into TEMPLATE_CONTEXT_PROCESSORS 
  * Setup Site instance via Django admin interface
  * Setup feedzilla settings via settings.py.  See available settings below.
     You have to import default settings with "from feedzilla.settings import *" line.
  * Setup static files. You should copy or symlink `static/feedzilla` directory contents from feedzilla installation directory to your %MEDIA_ROOT%. Check out the `manage.py feedzilla_static_location` command. It will show your where feedzilla static files are stored.
- * Setup django-compress:
-  * Put 'compress' into INSTALLED_APPS
-  * Put 'from feedzilla.compress_settings import *' to settings.py
-  * Make sure that you have %MEDIA_URL%/css and %MEDIA_URL%/js directories and
-    web server has write access to it.
 
 
 Dependencies
@@ -25,8 +20,6 @@ Dependencies
  * django-common
  * django-tagging
  * feedparser
- * django-bookmarker
- * django-compress
 
 
 Settings 

@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'feedzilla/base.html' %}
 {% load i18n %}
 
-{% block extra_js %}
+{% block feedzilla_extra_js %}
 <script type="text/javascript">
 $(function() {
     var query = '{{ query.upper|addslashes|safe }}';
@@ -12,9 +12,9 @@ $(function() {
 </script>
 {% endblock %}
 
-{% block query_value %}{{ query }}{% endblock %}
+{% block feedzilla_query_value %}{{ query }}{% endblock %}
 
-{% block content %}
+{% block feedzilla_content %}
 <h1>{% block title %}{% blocktrans %}Search for &laquo;{{ query }}&raquo;{% endblocktrans %}{% endblock %}</h1>
 
 <div class="divider2"></div>

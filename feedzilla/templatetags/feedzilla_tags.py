@@ -10,7 +10,7 @@ from feedzilla.models import Feed, Post
 
 register = template.Library()
 
-@register.inclusion_tag('feedzilla/tag_cloud.html', takes_context=True)
+@register.inclusion_tag('feedzilla/_tag_cloud.html', takes_context=True)
 def feedzilla_tag_cloud(context):
     """
     Show tag cloud for specified site.
@@ -22,7 +22,7 @@ def feedzilla_tag_cloud(context):
             }
 
 
-@register.inclusion_tag('feedzilla/donor_list.html')
+@register.inclusion_tag('feedzilla/_donor_list.html')
 def feedzilla_donor_list():
     """
     Show aggregated feed.
@@ -34,7 +34,7 @@ def feedzilla_donor_list():
             }
 
 
-@register.inclusion_tag('feedzilla/feed_head.html')
+@register.inclusion_tag('feedzilla/_feed_head.html')
 def feedzilla_feed_head(feed_id, number=3):
     """
     Show last 'number' messages from feed.

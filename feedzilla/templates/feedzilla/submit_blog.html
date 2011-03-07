@@ -1,10 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'feedzilla/base.html' %}
 {% load i18n %}
 
-{% block content %}
+{% block feedzilla_content %}
 <h1>{% trans "Submit a blog" %}</h1>
+
 {% if success %}
-<p>{{ success }}</p>
+<p>{% trans "Thank you. Your application has been accepted and will be reviewed by admin in the near time." %}</p>
 {% else %}
 <form method="post" class="common-form">
     {{ form.as_p }}

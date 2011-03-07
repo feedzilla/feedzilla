@@ -93,7 +93,10 @@ class FilterWord(models.Model):
 
 
 class Request(models.Model):
-    url = models.CharField(_('Site URL'), max_length=255, unique=True)
+    url = models.CharField(u'Адрес блога', max_length=255, unique=True)
+    title = models.CharField(u'Название блога', max_length=255)
+    author = models.CharField(u'Имя Фамилия автора блога', blank=True, max_length=50)
+    feed_url = models.CharField(u'URL фида', blank=True, max_length=255, help_text=u'Вы можете указать, какой именно RSS/Atom фид вы хотите добавить')
     created = models.DateTimeField(_('Creation date'), auto_now_add=True)
 
     def __unicode__(self):

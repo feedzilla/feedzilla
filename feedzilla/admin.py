@@ -44,7 +44,7 @@ class FilterWordAdmin(admin.ModelAdmin):
 
 
 class RequestAdmin(admin.ModelAdmin):
-    list_display = ['url', 'created']
+    list_display = ['url', 'title', 'author', 'created']
 
 admin.site.register(Feed, FeedAdmin)
 admin.site.register(Post, PostAdmin)

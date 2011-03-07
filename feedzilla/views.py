@@ -8,6 +8,7 @@ from django.db.models import Count
 from django.db import connection
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.cache import cache_page
+from django.core.mail import mail_admins
 
 from common.decorators import render_to
 from common.pagination import paginate
@@ -88,11 +89,13 @@ def search(request):
 @render_to('feedzilla/submit_blog.html')
 def submit_blog(request):
     form = build_form(AddBlogForm, request)
-    success = None
     if form.is_valid():
-        form.save()
-        success = _('Thanks, your submission has been accepted and will be '
-                    'reviewed by admin')
+        obj = form.save()
+        success = True
+        body = _('New submission for the planet: %s') % obj.url
+        mail_admins(_('%s: new submission') % settings.FEEDZILLA_SITE_TITLE, body)
+    else:
+        success = False
     return {'form': form,
             'success': success,
             }

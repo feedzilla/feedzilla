@@ -6,21 +6,15 @@ from django.conf import settings
 
 from feedzilla.models import Request
 
-class AddBlogForm(forms.Form):
-    url = forms.URLField(label=_('Site URL'))
+class AddBlogForm(forms.ModelForm):
+    class Meta:
+        model = Request
 
     def clean_url(self):
-        value = self.cleaned_data['url']
+        url = self.cleaned_data['url']
         try:
-            Request.objects.get(url=value)
+            Request.objects.get(url=url)
         except Request.DoesNotExist:
-            return value
+            return url
         else:
             raise forms.ValidationError(_('This address has been already submitted.'))
-
-    def save(self):
-        url = self.cleaned_data['url']
-        obj = Request.objects.create(url=url)
-        body = _('New submission for the planet: %s') % url
-        mail_admins(_('%s: new submission') % settings.FEEDZILLA_SITE_TITLE, body)
-        return obj

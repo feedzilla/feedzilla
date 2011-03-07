@@ -1,7 +1,7 @@
 from django.conf import settings
 
 CONTEXT = {}
-for key in settings.get_all_members():
+for key in dir(settings):
     if key.startswith('FEEDZILLA_'):
         CONTEXT[key] = getattr(settings, key)
 

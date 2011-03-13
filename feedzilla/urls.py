@@ -9,7 +9,7 @@ feed_dict = {
 urlpatterns = patterns('feedzilla.views',
     url(r'^$', 'index', name='feedzilla_index'),
     url('^tag/(?P<tag_value>.+)$', 'tag', name='feedzilla_tag'),
-    url('^sources$', 'sources', name='feedzilla_sources'),
+    url('^sources$', 'source_list', name='feedzilla_source_list'),
     url('^search$', 'search', name='feedzilla_search'),
     url('^submit$', 'submit_blog', name='feedzilla_submit_blog'),
 )

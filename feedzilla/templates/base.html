@@ -44,7 +44,7 @@
         <div class="site-navigation">
             <ul>
                 <li><a href="/">{% trans "News stream" %}</a></li>
-                <li><a href="{% url feedzilla_sources %}">{% trans "Sources" %}</a></li>
+                <li><a href="{% url feedzilla_source_list %}">{% trans "Sources" %}</a></li>
                 {% for link in FEEDZILLA_HEAD_LINKS %}
                 {{ link|safe }}
                 {% endfor %}

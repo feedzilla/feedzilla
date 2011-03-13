@@ -43,8 +43,8 @@ def tag(request, tag_value):
 
 
 @cache_page
-@render_to('feedzilla/sources.html')
-def sources(request):
+@render_to('feedzilla/source_list.html')
+def source_list(request):
 
     feeds = Feed.objects.all()
 

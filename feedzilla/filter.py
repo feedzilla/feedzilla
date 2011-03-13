@@ -15,7 +15,7 @@ def build_regexp(value, exact):
     value = value.lower()
     if exact:
         value = u'\b%s\b' % value
-    return re.compile(ur'%s' % value, re.U)
+    return re.compile(ur'%s' % value, re.U | re.I)
 
 
 def load_filters():

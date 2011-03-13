@@ -6,7 +6,9 @@ from django.db.models import permalink
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
+from feedzilla.util.clean import safe_html
 from tagging.fields import TagField
 
 class Feed(models.Model):
@@ -66,6 +68,9 @@ class Post(models.Model):
     def get_absolute_url(self):
         #return reverse('feedzilla_post', args=[self.id])
         return self.link
+
+    def summary_uncached(self):
+        return safe_html(self.content[:settings.FEEDZILLA_SUMMARY_SIZE])
 
 
 class FilterTag(models.Model):

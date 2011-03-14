@@ -12,6 +12,7 @@ def html_link(link):
 
 class FeedAdmin(admin.ModelAdmin):
     list_display = ['title', 'active', 'last_checked',
+                    'author',
                     'admin_feed_url', 'admin_site_url']
     search_fields = ['title', 'site_url']
 

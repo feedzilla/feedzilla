@@ -7,11 +7,11 @@ Installation
  * Add feedzilla to INSTALLED_APPS
  * Run `manage.py syncdb` or `manage.py sync` if you use South.
  * Include `url('', include('feedzilla.urls'))` in url config
- * Add `feedzilla.context_processors.settings` into TEMPLATE_CONTEXT_PROCESSORS 
  * Setup Site instance via Django admin interface
  * Setup feedzilla settings via settings.py.  See available settings below.
     You have to import default settings with "from feedzilla.settings import *" line.
- * Setup static files. You should copy or symlink `static/feedzilla` directory contents from feedzilla installation directory to your %MEDIA_ROOT%. Check out the `manage.py feedzilla_static_location` command. It will show your where feedzilla static files are stored.
+ * Setup static files. You should copy or symlink `static/feedzilla` directory contents from feedzilla installation directory to your %MEDIA_ROOT%.
+ * Play with templates. Probably you'll want override some of default templates.
 
 
 Dependencies
@@ -25,14 +25,9 @@ Dependencies
 Settings 
 ========
 
- * FEEDZILLA_PAGE_SIZE
+ * FEEDZILLA_PAGE_SIZE - number of items per page
  * FEEDZILLA_SUMMARY_SIZE
- * FEEDZILLA_SITE_TITLE
- * FEEDZILLA_SITE_DESCRIPTION
- * FEEDZILLA_HEAD_LINKS
- * FEEDZILLA_COPYRIGHTS
- * FEEDZILLA_TWITTER
- * FEEDZILLA_FEEDBURNER_FEED = None
- * FEEDZILLA_FEEDBURNER_COUNTER = False
+ * FEEDZILLA_SITE_TITLE - used in feed generation
+ * FEEDZILLA_SITE_DESCRIPTION - used in feed generation
 
 For actual list of settings look into feedzilla/settings.py

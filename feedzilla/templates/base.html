@@ -1,11 +1,11 @@
 {% load i18n %}<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-    <title>{% block title %}{{ FEEDZILLA_SITE_TITLE }}{% endblock %}</title>
+    <title>{% block title %}Yet another feedzilla site{% endblock %}</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
     <meta name="description" content="{% block meta_description %}{% endblock %}" />
-    <link rel="alternate" type="application/atom+xml" href="{% if FEEDZILLA_FEEDBURNER_FEED %}{{ FEEDZILLA_FEEDBURNER_FEED }}{% else %}{% url feedzilla_feed "posts" %}{% endif %}" title="{{ FEEDZILLA_SITE_TITLE }}" />
+    <link rel="alternate" type="application/atom+xml" href="{% url feedzilla_feed "posts" %}" title="Yet another feedzilla site" />
 
     <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}feedzilla/css/reset.css" />
     <link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}feedzilla/css/style.css" />
@@ -19,17 +19,12 @@
         <div class="site-head">
             <div class="inner">
                 <div class="logo">
-                    <h2><a href="/">{{ FEEDZILLA_SITE_TITLE }}</a></h2>
-                    <div class="site-description">{{ FEEDZILLA_SITE_DESCRIPTION }}</div>
+                    <h2><a href="/">Yet another feedzilla site</a></h2>
+                    <div class="site-description">Description of this cool site</div>
                 </div>
                 <div class="right">
                     <div class="site-updates">
-                        {% if FEEDZILLA_TWITTER %}
-                        <a href="http://twitter.com/{{ FEEDZILLA_TWITTER }}" class="twitter-link">
-                            <img src="{{ MEDIA_URL }}feedzilla/img/twitter.png" alt="{% trans "Twitter updates" %}" />
-                        </a>
-                        {% endif %}
-                        <a href="{% if FEEDZILLA_FEEDBURNER_FEED %}{{ FEEDZILLA_FEEDBURNER_FEED }}{% else %}{% url feedzilla_feed "posts" %}{% endif %}" class="feed-link">
+                        <a href="{% url feedzilla_feed "posts" %}" class="feed-link">
                             <img src="{{ MEDIA_URL }}feedzilla/img/feed-icon-big.png" alt="{% trans "ATOM feed" %}" />
                         </a>
                     </div>
@@ -45,9 +40,6 @@
             <ul>
                 <li><a href="/">{% trans "News stream" %}</a></li>
                 <li><a href="{% url feedzilla_source_list %}">{% trans "Sources" %}</a></li>
-                {% for link in FEEDZILLA_HEAD_LINKS %}
-                {{ link|safe }}
-                {% endfor %}
             </ul>
         </div>
         <div class="site-head-bottom">

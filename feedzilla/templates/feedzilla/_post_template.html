@@ -14,6 +14,17 @@
     </div>
     <div class="details">
         <ul>
+            <li class="share">
+                <!-- AddThis Button BEGIN -->
+                <div class="addthis_toolbox addthis_default_style" addthis:url="{{ post.get_absolute_url }}" addthis:title="{{ post }}">
+                    <a class="addthis_button_preferred_1"></a>
+                    <a class="addthis_button_preferred_2"></a>
+                    <a class="addthis_button_preferred_3"></a>
+                    <a class="addthis_button_preferred_4"></a>
+                    <a class="addthis_button_compact"></a>
+                </div>
+                <!-- AddThis Button END -->
+            </li>
             <li><span title="{% trans "Date of publication" %}">{{ post.created|date:"d M H:i" }}</span></li>
             {% if post.tags %}<li><span class="tags" title="{% trans "Labels of post" %}">
                 {% tags_for_object post as tags %}

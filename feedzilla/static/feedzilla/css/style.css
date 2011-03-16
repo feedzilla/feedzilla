@@ -194,15 +194,19 @@ a:hover {
     margin-top: 1em;
 }
 
-.post .details li {
-    display: inline;
-    font-size: 0.8em;
-    margin-right: 1em;
-}
+    .post .details li.share {
+        margin-bottom: 1em;
+    }
 
-.post .details .tags a {
-    margin-right: 0.5em;
-}
+    .post .details li {
+        display: inline;
+        font-size: 0.8em;
+        margin-right: 1em;
+    }
+
+    .post .details .tags a {
+        margin-right: 0.5em;
+    }
 
 .site-footer {
     margin-top: 2em;

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+<channel> 
+            <title>UbuntuNews.ru: Лента новостей</title> 
+            <link>http://ubuntunews.ru/</link> 
+            <description /> 
+            <language>ru</language> 
+            <copyright>Новости Ubuntu GNU/Linux 2011</copyright> 
+            <ttl>120</ttl> 
+<atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/Ubuntunewsru" /><feedburner:info uri="ubuntunewsru" /><atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" /><feedburner:browserFriendly></feedburner:browserFriendly><item> 
+    <title>Gtk+ 3.2 позволяет запускать десктоп приложения в браузере</title> 
+    <link>http://ubuntunews.ru/news/gtk-32-run-any-application-in-firefox.html</link> 
+    <description><![CDATA[
+Gtk+ 3.2 теперь позволяет запускать любое приложение в браузере с помощью GDK HTML5 бэкенда, таким образом можно запустить  GIMP, Gedit или любую другую программу на самом компьютере или даже удаленно, воспользовавшись веб-браузером.
+
+Бэкенд все еще нах&hellip;
+    ]]></description> 
+    <pubDate>Птн, 18 Мар 2011 02:47:00 +0300</pubDate> 
+    <guid isPermaLink="false">news/gtk-32-run-any-application-in-firefox.html</guid> 
+    <dc:creator>Root</dc:creator> 
+</item> 
+<item> 
+    <title>Вышла LXDE редакция Linux Mint 10</title> 
+    <link>http://ubuntunews.ru/news/julia-lxde-linux-mint-10.html</link> 
+    <description><![CDATA[
+Представлена LXDE редакция Linux Mint 10 Julia, легковесного десктоп дистрибутива основанного на Ubuntu 10.10, 
+с обновлением приложений и новыми характеристиками,  делающие систему еще более дружелюбной и простой в использовании. Размер дистрибутива 683&hellip;
+    ]]></description> 
+    <pubDate>Птн, 18 Мар 2011 01:04:00 +0300</pubDate> 
+    <guid isPermaLink="false">news/julia-lxde-linux-mint-10.html</guid> 
+    <dc:creator>Root</dc:creator> 
+</item> 
+<item> 
+    <title>Что нового в Unity 3.6.4</title> 
+    <link>http://ubuntunews.ru/news/unity-364-ubuntu-11-04.html</link> 
+    <description><![CDATA[
+Рассмотрим, что нового в Ubuntu 11.04 из визуальных изменения в текущей  версии графической оболочки Unity 3.6.4:
+
+
+По нажатию ALT + F2 откроется окно Dash, в котором при написание команды выводится визуальный список доступных программ и утилит подходя&hellip;
+    ]]></description> 
+    <pubDate>Срд, 16 Мар 2011 04:13:00 +0300</pubDate> 
+    <guid isPermaLink="false">news/unity-364-ubuntu-11-04.html</guid> 
+    <dc:creator>Root</dc:creator> 
+</item> 
+<item> 
+    <title>Дополнение Thunderbird доступно для тестирования в Natty</title> 
+    <link>http://ubuntunews.ru/news/thunderbird-unity-extension-testing.html</link> 
+    <description><![CDATA[
+Как известно Ubuntu использует почтовый клиент Evolution по умолчанию, и поддержка Thunderbird в Unity не является приоритетной задачей, вот этой работой по интеграции Thunderbird на панель Unity и занялся Mike Conley из Mozilla.
+
+На текущий момент пред&hellip;
+    ]]></description> 
+    <pubDate>Срд, 16 Мар 2011 01:04:00 +0300</pubDate> 
+    <guid isPermaLink="false">news/thunderbird-unity-extension-testing.html</guid> 
+    <dc:creator>Root</dc:creator> 
+</item> 
+<item> 
+    <title>Релиз Ultimate Edition 2.9</title> 
+    <link>http://ubuntunews.ru/news/ultimate-edition-2-9.html</link> 
+    <description><![CDATA[
+Вышел релиз DVD дистрибутива Ultimate Edition 2.9, основанного на пакетной базе Ubuntu 10.10,  включающего обширную подборку приложений, а также мультимедийные кодеки и драйверы устройств. 
+
+
+
+Характеристики выпуска:
+
+
+В дистрибутиве были произведе&hellip;
+    ]]></description> 
+    <pubDate>Втр, 15 Мар 2011 23:34:47 +0300</pubDate> 
+    <guid isPermaLink="false">news/ultimate-edition-2-9.html</guid> 
+    <dc:creator>Root</dc:creator> 
+</item> 
+<item> 
+    <title>Новый дизайн полосы прокрутки в Ubuntu 11.04</title> 
+    <link>http://ubuntunews.ru/news/ubuntus-new-overlay-scrollbars-natty.html</link> 
+    <description><![CDATA[
+В Ubuntu 11.04 появилась новая минималистичная полоса прокрутки, появляющийся при наведение мыши, вместо удаленной старой, сплошной полосы идущий вдоль границ приложения. 
+
+Mark пишет, что вдохновением для нового дизайна скролбара послужили мобильные ус&hellip;
+    ]]></description> 
+    <pubDate>Вск, 13 Мар 2011 18:50:41 +0300</pubDate> 
+    <guid isPermaLink="false">news/ubuntus-new-overlay-scrollbars-natty.html</guid> 
+    <dc:creator>Root</dc:creator> 
+</item> 
+<item> 
+    <title>15 новых обоев для Ubuntu</title> 
+    <link>http://ubuntunews.ru/apps/15-new-wallpaper-ubuntu.html</link> 
+    <description><![CDATA[
+В сети появились несколько новых замечательных обоев для Ubuntu, которые сейчас и рассмотрим.
+
+ino1 автор alkore31
+
+UBUNTU WALL 2 автор sasomkd
+
+ino2 автор alkore31
+
+Ubuntu Wallpaper автор iHack6
+
+Ubuntu white автор Sishnizzle
+
+Ubuntu Wallpape&hellip;
+    ]]></description> 
+    <pubDate>Птн, 11 Мар 2011 03:32:00 +0300</pubDate> 
+    <guid isPermaLink="false">apps/15-new-wallpaper-ubuntu.html</guid> 
+    <dc:creator>Root</dc:creator> 
+</item> 
+<item> 
+    <title>Новый логотип Ubuntu One</title> 
+    <link>http://ubuntunews.ru/news/new-ubuntu-one-logo.html</link> 
+    <description><![CDATA[
+Облачный сервис Ubuntu One, предназначенный для обмена файлами и синхронизации между компьютерами и мобильными устройствами, сменил логотип.
+
+
+Изменениям также подвергся и дизайн сайта.&hellip;
+    ]]></description> 
+    <pubDate>Птн, 11 Мар 2011 02:42:00 +0300</pubDate> 
+    <guid isPermaLink="false">news/new-ubuntu-one-logo.html</guid> 
+    <dc:creator>Root</dc:creator> 
+</item> 
+<item> 
+    <title>Canonical объединяет редакции Ubuntu для нетбуков и десктопов</title> 
+    <link>http://ubuntunews.ru/news/end-ubuntu-netbook-edition.html</link> 
+    <description><![CDATA[
+Gerry Carr, являющийся директором по маркетингу платформы в компании Сanonical, заявил, что в следующем апрельском релизе Ubuntu 11.04 отпала необходимость в специальной редакции дистрибутива «Netbook edition»  для нетбуков. Объясняя это тем, что пользова&hellip;
+    ]]></description> 
+    <pubDate>Птн, 11 Мар 2011 02:15:00 +0300</pubDate> 
+    <guid isPermaLink="false">news/end-ubuntu-netbook-edition.html</guid> 
+    <dc:creator>Root</dc:creator> 
+</item> 
+<item> 
+    <title>Вышел облачный дистрибутив Joli OS 1.2</title> 
+    <link>http://ubuntunews.ru/news/new-jolicloud-joli-os-1.2.html</link> 
+    <description><![CDATA[
+Вышла новая версия дистрибутива Joli OS 1.2, ранее известного как Jolicloud. Дистрибутив основан на пакетной базе Ubuntu и предназначен для работы на нетбуках и планшетах, обладает дружелюбным пользовательским интерфейсом основанным на веб технологиях и н&hellip;
+    ]]></description> 
+    <pubDate>Птн, 11 Мар 2011 00:55:00 +0300</pubDate> 
+    <guid isPermaLink="false">news/new-jolicloud-joli-os-1.2.html</guid> 
+    <dc:creator>Root</dc:creator> 
+</item> 
+    </channel> 
+</rss>

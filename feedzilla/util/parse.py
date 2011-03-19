@@ -1,47 +1,57 @@
 """
 Functions for easy parsing RSS and ATOM feeds.
 """
-
+import locale
 import sha
 import re
 from time import mktime
 from datetime import datetime
 import feedparser
 import logging
-#from dateutil import parser
 
 import clean
 
-def guess_date(chunks):
+def guess_date(dates, feed):
     """
-    Try to find date in chunks.
-
-    Yep, shit.
+    Try to parse date in non-standart format.
     """
 
-    #for chunk in chunks:
-        #try:
-            #print 'TRY', chunk
-            #return parser.parse(chunk)
-        #except ValueError:
-            #pass
+    parsed = None
+    oldlocale = locale.getlocale()
 
-    #regexps = (
-        #(re.compile(r'\d+-\d+-\d+T\d+-\d+-\d+'), '%Y-%m-%dT%H:%M:%S'),
-    #)
+    for date_string in dates:
+        tz_offset = re.compile(r'\s+\+(\d{2})(\d{2})$')
+        match = tz_offset.search(date_string)
+        # TODO: implement processing TZ offset
+        # and normalizing the date to the project's TZ
+        if match:
+            date_string = tz_offset.sub('', date_string)
+        else:
+            pass
 
-    #for chunk in chunks:
-        #print chunk
-        #for rex, format in regexps:
-            #match = rex.match(chunk)
-            #if match:
-                #return datetime.strptime(chunk, format)
-            #else:
-                #print 'bad rex'
-    return None
+        lang = feed.feed.language[:2]
+        # strptime fails on unicode
+        if isinstance(date_string, unicode):
+            date_string = date_string.encode('utf-8')
+
+        if not lang.startswith('en'):
+            try:
+                locale_name = str('%s_%s.UTF-8' % (lang.lower(), lang.upper()))
+                locale.setlocale(locale.LC_ALL, locale_name)
+            except locale.Error:
+                pass
+            # try localized RFC 822 format
+            try:
+                parsed = datetime.strptime(date_string, '%a, %d %b %Y %H:%M:%S')
+            except ValueError:
+                pass
+            else:
+                break
+    locale.setlocale(locale.LC_ALL, oldlocale)
+    return parsed
 
 
-def parse_modified_date(entry):
+def parse_modified_date(entry, feed):
     """
     Find out modified date of feed entry.
     """
@@ -63,11 +73,12 @@ def parse_modified_date(entry):
         return datetime.fromtimestamp(mktime(time_tuple))
 
     if unparsed:
-        guessed = guess_date(unparsed)
+        guessed = guess_date(unparsed, feed)
         if guessed:
             return guessed
-
-    logging.error('Could not parse modified date of %s' % getattr(entry, 'link', ''))
+    
+    example = unparsed[0] if unparsed else ''
+    logging.error('Could not parse modified date %s of post %s' % (getattr(entry, 'link', ''), example))
     return None
 
 
@@ -103,17 +114,6 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
     resp = {'feed': None, 'success': False, 'entries': [], 'error': None}
 
     try:
-        #if url:
-            #source_data = urllib.urlopen(url).read()
-
-        # Crazy hack
-        #if '<rss' in source_data[:100]:
-            #if '<lastBuildDate>' in source_data:
-                #source_data = source_data.replace('<lastBuildDate>', '<pubDate>')
-                #source_data = source_data.replace('</lastBuildDate>', '</pubDate>')
-                #logging.debug('Crazy lastBuildDate hack was applyed to feed %s' % url)
-                #print source_data
-
         resp['feed'] = feedparser.parse(url and url or source_data)
     except Exception, ex:
         resp['error'] = ex
@@ -153,7 +153,7 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
         summary = clean.safe_html(summary)
         content = clean.safe_html(content)
 
-        created = parse_modified_date(entry)
+        created = parse_modified_date(entry, resp['feed'])
         if not created:
             continue
 

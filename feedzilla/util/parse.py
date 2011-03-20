@@ -1,5 +1,14 @@
 """
-Functions for easy parsing RSS and ATOM feeds.
+This module provides `parse_feed` function which
+uses `feedparser` power to parse RSS/Atom feeds.
+`feedparser` return parsed feed as it is. If you need
+post's content then you have to check `content`, `summary`,
+`description` attributes of the feed entry. The same is true
+for updated time and some other things.
+`parse_feed` tries to normalize these thinkgs. You'll always
+get content in `content` attribute and updated time in `created` attribute.
+Also `parse_feed` tries to parse non-English variants of updated time and
+extract tags.
 """
 import locale
 import sha
@@ -10,6 +19,8 @@ import feedparser
 import logging
 
 import clean
+
+log = logging.getLogger('feedzilla.util.parse')
 
 def guess_date(dates, feed):
     """
@@ -76,16 +87,12 @@ def parse_modified_date(entry, feed):
         guessed = guess_date(unparsed, feed)
         if guessed:
             return guessed
-    
-    example = unparsed[0] if unparsed else ''
-    logging.error('Could not parse modified date %s of post %s' % (getattr(entry, 'link', ''), example))
+
     return None
 
 
 def get_tags(entry):
-    """
-    Returns a list of tag objects from an entry.
-    """
+    "Return a list of tag objects of the entry"
 
     tags = set()
     if 'tags' in entry:
@@ -105,6 +112,7 @@ def get_tags(entry):
 def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
     """
     Parse feed from url or source data.
+
     Returns dict with feed, entries and success flag
     """
 
@@ -117,6 +125,7 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
         resp['feed'] = feedparser.parse(url and url or source_data)
     except Exception, ex:
         resp['error'] = ex
+        log.error('Feed parsing failed', exc_info=ex)
         return resp
     else:
         resp['success'] = True
@@ -136,12 +145,14 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
         resp['feed'].last_checked = datetime.now()
 
     for entry in resp['feed'].entries:
+        link = getattr(entry, 'link', '')
+
         # Do not process entries without title
         if not hasattr(entry, 'title'):
+            log.error('Post %s does not has a title' % link)
             continue
 
         title = entry.title
-        link = getattr(entry, 'link', '')
 
         if hasattr(entry,'content'):
             content = entry.content[0].value
@@ -160,14 +171,21 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
 
         created = parse_modified_date(entry, resp['feed'])
         if not created:
+            log.error('Post %s does not has modified date' % link)
             continue
 
         tags = get_tags(entry)
         guid = sha.new(link.encode('utf-8')).hexdigest()
 
-        entry = {'title': title, 'link': link, 'summary': summary,
-                 'content': content, 'created': created,
-                 'guid': guid, 'tags': tags}
+        entry = {
+            'title': title,
+            'link': link,
+            'summary': summary,
+            'content': content,
+            'created': created,
+            'guid': guid,
+            'tags': tags,
+        }
         resp['entries'].append(entry)
 
     return resp

@@ -26,7 +26,7 @@ for dirpath, dirnames, filenames in os.walk(PACKAGE):
             data_files.append(os.path.join(prefix, f))
 
 setup(
-    version = '0.1.12',
+    version = '0.1.13',
     description = 'Django application for atom/rss feeds aggregation i.e. planet engine',
     author = 'Grigoriy Petukhov',
     author_email = 'lorien@lorien.name',

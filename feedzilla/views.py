@@ -19,7 +19,7 @@ from feedzilla.models import Post, Feed
 from feedzilla.forms import AddBlogForm
 
 
-@cache_page
+@cache_page(60 * 5)
 @render_to('feedzilla/index.html')
 def index(request):
     qs = Post.active_objects.all().select_related('feed')
@@ -30,7 +30,7 @@ def index(request):
             }
 
 
-@cache_page
+@cache_page(60 * 15)
 @render_to('feedzilla/tag.html')
 def tag(request, tag_value):
     tag = get_object_or_404(Tag, name=tag_value)
@@ -42,7 +42,7 @@ def tag(request, tag_value):
             }
 
 
-@cache_page
+@cache_page(60 * 15)
 @render_to('feedzilla/source_list.html')
 def source_list(request):
 
@@ -85,7 +85,6 @@ def search(request):
             }
 
 
-@cache_page
 @render_to('feedzilla/submit_blog.html')
 def submit_blog(request):
     form = build_form(AddBlogForm, request)

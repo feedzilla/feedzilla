@@ -3,6 +3,7 @@ import logging
 from datetime import datetime
 
 from django.core.management.base import BaseCommand
+from django.conf import settings
 
 from feedzilla.util.parse import parse_feed
 from feedzilla.models import Feed, Post
@@ -27,9 +28,12 @@ class Command(BaseCommand):
                     try:
                         Post.objects.get(guid=entry['guid'])
                     except Post.DoesNotExist:
+                        tags = entry['tags']
+                        if settings.FEEDZILLA_TAGS_LOWERCASE:
+                            tags = set(x.lower() for x in tags)
                         post = Post(
                             feed=feed,
-                            tags=', '.join(entry['tags']),
+                            tags=', '.join(tags),
                             title=entry['title'],
                             content=entry['content'],
                             summary=entry['summary'],

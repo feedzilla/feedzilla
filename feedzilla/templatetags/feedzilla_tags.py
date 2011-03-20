@@ -2,6 +2,7 @@ import random
 
 from django import template
 from django.utils.safestring import mark_safe
+from django.conf import settings
 
 from tagging.models import Tag
 
@@ -16,7 +17,9 @@ def feedzilla_tag_cloud(context):
     Show tag cloud for specified site.
     """
 
-    tags = Tag.objects.cloud_for_model(Post, filters={'active': True})
+    tags = Tag.objects.cloud_for_model(Post, filters={'active': True},
+                                       steps=settings.FEEDZILLA_CLOUD_STEPS,
+                                       min_count=settings.FEEDZILLA_CLOUD_MIN_COUNT)
 
     return {'tags': tags,
             }

@@ -136,7 +136,11 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
         resp['feed'].last_checked = datetime.now()
 
     for entry in resp['feed'].entries:
-        title = getattr(entry, 'title', 'untitled')
+        # Do not process entries without title
+        if not hasattr(entry, 'title'):
+            continue
+
+        title = entry.title
         link = getattr(entry, 'link', '')
 
         if hasattr(entry,'content'):
@@ -146,7 +150,8 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
         elif hasattr(entry,'description'):
             content = entry.description
         else:
-            continue
+            # Use title as fallback variant for the post's content
+            content = title
 
         summary = content[:summary_size]
 

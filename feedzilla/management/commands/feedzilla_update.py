@@ -47,3 +47,4 @@ class Command(BaseCommand):
 
             feed.last_checked = datetime.now()
             feed.save()
+            feed.update_counts()

@@ -1,30 +1,34 @@
 # -*- coding: utf-8
+from urlparse import urlsplit
 
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
+from django.core.urlresolvers import reverse
+from django.utils.http import urlencode
 
 from feedzilla.models import Feed, Post, FilterTag, FilterWord, Request
 
 
-def html_link(link):
-    return u'<a href="%(link)s">%(label)s</a>' % {'link': link, 'label': _('link')}
+def html_link(url):
+    host = urlsplit(url).hostname
+    return u'<a href="%s">%s</a>' % (url, host)
 
 
 class FeedAdmin(admin.ModelAdmin):
     list_display = ['title', 'active', 'last_checked',
-                    'author',
-                    'admin_feed_url', 'admin_site_url']
+                    'author', 'admin_feed_url', 'admin_site_url',
+                    'active_post_count', 'post_count', 'created']
     search_fields = ['title', 'site_url']
 
     def admin_feed_url(self, obj):
         return html_link(obj.feed_url)
     admin_feed_url.allow_tags = True
-    admin_feed_url.short_description = _('Feed link')
+    admin_feed_url.short_description = _('Feed')
 
     def admin_site_url(self, obj):
         return html_link(obj.site_url)
     admin_site_url.allow_tags = True
-    admin_site_url.short_description = _('Site link')
+    admin_site_url.short_description = _('Site')
 
 class PostAdmin(admin.ModelAdmin):
     list_display = ['title', 'feed', 'created', 'active',
@@ -45,7 +49,20 @@ class FilterWordAdmin(admin.ModelAdmin):
 
 
 class RequestAdmin(admin.ModelAdmin):
-    list_display = ['url', 'title', 'author', 'created']
+    list_display = ['url', 'title', 'author', 'created', 'process_link']
+
+    def process_link(self, obj):
+        args = {
+            'title': obj.title,
+            'site_url': obj.url,
+            'feed_url': obj.feed_url,
+            'author': obj.author,
+        }
+        url = '%s?%s' % (reverse('admin:feedzilla_feed_add'),
+                         urlencode(args))
+        return u'<a href="%s">%s</a>' % (url, _('Process'))
+    process_link.allow_tags = True
+    process_link.short_description = _('Process')
 
 admin.site.register(Feed, FeedAdmin)
 admin.site.register(Post, PostAdmin)

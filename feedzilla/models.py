@@ -20,6 +20,10 @@ class Feed(models.Model):
     last_checked = models.DateTimeField(_('last checked'), blank=True, null=True)
     skip_filters = models.BooleanField(_('allow all messages'), blank=True, default=False)
     author = models.CharField(_('blog author'), blank=True, max_length=255)
+    created = models.DateTimeField(_('Date of submition'), blank=True, null=True,
+                                   auto_now_add=True)
+    post_count = models.IntegerField(blank=True, default=0)
+    active_post_count = models.IntegerField(blank=True, default=0)
 
     def __unicode__(self):
         return self.title
@@ -36,6 +40,11 @@ class Feed(models.Model):
 
     def author_or_title(self):
         return self.author or self.title
+
+    def update_counts(self):
+        self.post_count = self.posts.count()
+        self.active_post_count = self.posts.filter(active=True).count()
+        self.save()
 
 
 class ActivePostManager(models.Manager):

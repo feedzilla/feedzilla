@@ -9,11 +9,19 @@ from feedzilla.util.parse import parse_feed
 from feedzilla.models import Feed, Post
 from feedzilla import settings
 
+
 class Command(BaseCommand):
     help = u'Update feeds'
 
     def handle(self, *args, **kwargs):
         logging.basicConfig(level=logging.DEBUG)
+
+        processors = []
+        for path in settings.FEEDZILLA_POST_PROCESSORS:
+            module_path, cls = path.rsplit('.', 1)
+            module = __import__(module_path, globals(), locals(), ['foo'])
+            proc = getattr(module, cls)()
+            processors.append(proc)
 
         for feed in Feed.objects.filter(active=True):
             logging.debug('parsing %s' % feed.feed_url)
@@ -42,6 +50,18 @@ class Command(BaseCommand):
                             created=entry['created']
                         )
                         post.save()
+
+                        # Remember post details
+                        post_snapshot = post.__dict__
+
+                        for proc in processors:
+                            proc.process(post)
+
+                        # If post was changed by some processor
+                        # then save changes
+                        if post.__dict__ != post_snapshot:
+                            post.save()
+
                         new_posts += 1
                 logging.debug('New posts: %d' % new_posts)
 

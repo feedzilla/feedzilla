@@ -5,3 +5,6 @@ FEEDZILLA_SITE_DESCRIPTION = 'Edit your settings to change that line'
 FEEDZILLA_CLOUD_STEPS = 4
 FEEDZILLA_CLOUD_MIN_COUNT = 2
 FEEDZILLA_TAGS_LOWERCASE = True
+FEEDZILLA_POST_PROCESSORS = (
+    'feedzilla.processors.ContentFilterProcessor',
+)

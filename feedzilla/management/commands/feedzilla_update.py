@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import logging
 from datetime import datetime
+import re
 
 from django.core.management.base import BaseCommand
 from django.conf import settings
@@ -9,6 +10,7 @@ from feedzilla.util.parse import parse_feed
 from feedzilla.models import Feed, Post
 from feedzilla import settings
 
+REX_TAGS_TAIL = re.compile(',[^,]*')
 
 class Command(BaseCommand):
     help = u'Update feeds'
@@ -39,6 +41,12 @@ class Command(BaseCommand):
                         tags = entry['tags']
                         if settings.FEEDZILLA_TAGS_LOWERCASE:
                             tags = set(x.lower() for x in tags)
+
+                        # Strip tags to 255 chars string
+                        # because of TagField limitation
+                        tags = ', '.join(tags)
+                        tags = REX_TAGS_TAIL.sub('', tags)[:255]
+
                         post = Post(
                             feed=feed,
                             tags=', '.join(tags),

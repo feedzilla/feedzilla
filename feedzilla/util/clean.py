@@ -26,4 +26,10 @@ def safe_html(data):
                 if 'img/' == elem[0] and 'src' == attr:
                     continue
                 del elem[1][attr]
-    return htmldata.tagjoin(tree)
+    data = htmldata.tagjoin(tree)
+    # Temporary hack
+    # htmldata doing something shitty with html:
+    # tagjoin return invalid DIV
+    # Data for testing: http://py-algorithm.blogspot.com/2011/04/blog-post_3267.html
+    data = normalize_html(data)
+    return data

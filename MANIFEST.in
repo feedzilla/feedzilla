@@ -1,2 +1,2 @@
-recursive-include feedzilla *
-global-exclude *.pyc
+recursive-include feedzilla/templates *.html
+recursive-include feedzilla/static *

@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+# Copyright: 2011, Grigoriy Petukhov
+# Author: Grigoriy Petukhov (http://lorien.name)
+# License: BSD
 from django import forms
 from django.core.mail import mail_admins
 from django.utils.translation import ugettext_lazy as _

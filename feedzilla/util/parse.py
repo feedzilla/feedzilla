@@ -10,6 +10,9 @@ get content in `content` attribute and updated time in `created` attribute.
 Also `parse_feed` tries to parse non-English variants of updated time and
 extract tags.
 """
+# Copyright: 2011, Grigoriy Petukhov
+# Author: Grigoriy Petukhov (http://lorien.name)
+# License: BSD
 import locale
 import sha
 import re

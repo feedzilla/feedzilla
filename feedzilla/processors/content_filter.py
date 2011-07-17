@@ -4,6 +4,9 @@ This module provides functions to filter posts by keyword in post's content and 
 I do not using re.I flag in regexps because of current locale does not affect
 on it. So the solution is to make both searchable text and regexp in lower case.
 """
+# Copyright: 2011, Grigoriy Petukhov
+# Author: Grigoriy Petukhov (http://lorien.name)
+# License: BSD
 import re
 import locale
 

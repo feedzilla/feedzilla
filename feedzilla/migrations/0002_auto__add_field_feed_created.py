@@ -1,4 +1,7 @@
 # encoding: utf-8
+# Copyright: 2011, Grigoriy Petukhov
+# Author: Grigoriy Petukhov (http://lorien.name)
+# License: BSD
 import datetime
 from south.db import db
 from south.v2 import SchemaMigration

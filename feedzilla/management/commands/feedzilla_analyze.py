@@ -1,6 +1,9 @@
 """
 Script for searching invalid or obsolete feeds.
 """
+# Copyright: 2011, Grigoriy Petukhov
+# Author: Grigoriy Petukhov (http://lorien.name)
+# License: BSD
 from grab import Grab
 import re
 from urlparse import urlsplit

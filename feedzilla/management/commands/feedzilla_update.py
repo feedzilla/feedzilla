@@ -10,8 +10,6 @@ from feedzilla.util.parse import parse_feed
 from feedzilla.models import Feed, Post
 from feedzilla import settings
 
-REX_TAGS_TAIL = re.compile(',[^,]*')
-
 class Command(BaseCommand):
     help = u'Update feeds'
 
@@ -25,7 +23,11 @@ class Command(BaseCommand):
             proc = getattr(module, cls)()
             processors.append(proc)
 
-        for feed in Feed.objects.filter(active=True):
+        qs = Feed.objects.filter(active=True)
+        if len(args):
+            qs = qs.filter(feed_url__icontains=args[0])
+
+        for feed in qs:
             logging.debug('parsing %s' % feed.feed_url)
 
             resp = parse_feed(feed.feed_url, etag=feed.etag,
@@ -35,17 +37,23 @@ class Command(BaseCommand):
             else:
                 new_posts = 0
                 for entry in resp['entries']:
+
                     try:
                         Post.objects.get(guid=entry['guid'])
                     except Post.DoesNotExist:
+
                         tags = entry['tags']
                         if settings.FEEDZILLA_TAGS_LOWERCASE:
                             tags = set(x.lower() for x in tags)
-
-                        # Strip tags to 255 chars string
-                        # because of TagField limitation
-                        tags = ', '.join(tags)
-                        tags = REX_TAGS_TAIL.sub('', tags)[:255]
+                        # Sum of tags lengths should not be
+                        # more than 255 chars
+                        newtags = []
+                        size = 0
+                        for tag in tags:
+                            size += len(tag)
+                            if size <= 255:
+                                newtags.append(tag)
+                        tags = newtags
 
                         post = Post(
                             feed=feed,

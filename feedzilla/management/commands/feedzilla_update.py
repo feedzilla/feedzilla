@@ -53,7 +53,7 @@ class Command(BaseCommand):
                         newtags = []
                         size = 0
                         for tag in tags:
-                            size += len(tag)
+                            size += (len(tag) + 2)
                             if size <= 255:
                                 newtags.append(tag)
                         tags = newtags

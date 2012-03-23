@@ -148,47 +148,50 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
         resp['feed'].last_checked = datetime.now()
 
     for entry in resp['feed'].entries:
-        link = getattr(entry, 'link', '')
+        try:
+            link = getattr(entry, 'link', '')
 
-        # Do not process entries without title
-        if not hasattr(entry, 'title'):
-            log.error('Post %s does not has a title' % link)
-            continue
+            # Do not process entries without title
+            if not hasattr(entry, 'title'):
+                log.error('Post %s does not has a title' % link)
+                continue
 
-        title = entry.title
+            title = entry.title
 
-        if hasattr(entry,'content'):
-            content = entry.content[0].value
-        elif hasattr(entry,'summary'):
-            content = entry.summary
-        elif hasattr(entry,'description'):
-            content = entry.description
-        else:
-            # Use title as fallback variant for the post's content
-            content = title
+            if hasattr(entry,'content'):
+                content = entry.content[0].value
+            elif hasattr(entry,'summary'):
+                content = entry.summary
+            elif hasattr(entry,'description'):
+                content = entry.description
+            else:
+                # Use title as fallback variant for the post's content
+                content = title
 
-        summary = content[:summary_size]
+            summary = content[:summary_size]
 
-        summary = clean.safe_html(summary)
-        content = clean.safe_html(content)
+            summary = clean.safe_html(summary)
+            content = clean.safe_html(content)
 
-        created = parse_modified_date(entry, resp['feed'])
-        if not created:
-            log.error('Post %s does not has modified date' % link)
-            continue
+            created = parse_modified_date(entry, resp['feed'])
+            if not created:
+                log.error('Post %s does not has modified date' % link)
+                continue
 
-        tags = get_tags(entry)
-        guid = sha.new(link.encode('utf-8')).hexdigest()
+            tags = get_tags(entry)
+            guid = sha.new(link.encode('utf-8')).hexdigest()
 
-        entry = {
-            'title': title,
-            'link': link,
-            'summary': summary,
-            'content': content,
-            'created': created,
-            'guid': guid,
-            'tags': tags,
-        }
-        resp['entries'].append(entry)
+            entry = {
+                'title': title,
+                'link': link,
+                'summary': summary,
+                'content': content,
+                'created': created,
+                'guid': guid,
+                'tags': tags,
+            }
+            resp['entries'].append(entry)
+        except Exception, ex:
+            logging.error(ex)
 
     return resp

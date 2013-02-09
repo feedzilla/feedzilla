@@ -10,7 +10,6 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Count
 from django.db import connection
 from django.utils.translation import ugettext_lazy as _
-from django.views.decorators.cache import cache_page
 from django.core.mail import mail_admins
 
 from common.decorators import render_to
@@ -22,7 +21,6 @@ from feedzilla.models import Post, Feed
 from feedzilla.forms import AddBlogForm
 
 
-@cache_page(60 * 5)
 @render_to('feedzilla/index.html')
 def index(request):
     qs = Post.active_objects.all().select_related('feed')
@@ -33,7 +31,6 @@ def index(request):
             }
 
 
-@cache_page(60 * 15)
 @render_to('feedzilla/tag.html')
 def tag(request, tag_value):
     tag = get_object_or_404(Tag, name=tag_value)
@@ -45,7 +42,6 @@ def tag(request, tag_value):
             }
 
 
-@cache_page(60 * 15)
 @render_to('feedzilla/source_list.html')
 def source_list(request):
 

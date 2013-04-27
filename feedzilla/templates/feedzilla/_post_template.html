@@ -7,9 +7,11 @@
     <div class="content">
         {{ post.summary_uncached|safe }}
     </div>
+    {% if FEEDZILLA_EXPAND_FULL %}
     <div class="content-full" style="display: none">
         {{ post.content|safe }}
     </div>
+    {% endif %}
     <div class="meta-display">
         {% if FEEDZILLA_EXPAND_FULL %}<a class="btn btn-mini" href="#" onclick="var p = $(this).parent().parent(); p.find('.content').hide(); p.find('.content-full').show(); return false;">{% trans "Expand" %}</a> {% trans "or" %} {% endif %}<a class="btn btn-mini btn-success" href="{{ post.get_absolute_url }}">{% trans "Read original" %}</a>
     </div>

@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block extra_css %}
+<link href="{{ STATIC_URL }}feedzilla/css/custom.css" type="text/css" rel="stylesheet" media="screen,projection" />
+{% endblock %}
+
 {% block extra_js %}
     {% block feedzilla_extra_js %}{% endblock %}
 {% endblock %}

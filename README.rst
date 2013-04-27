@@ -2,6 +2,20 @@
 Feedzilla Django Application
 ============================
 
+Changelog
+=========
+
+0.20::
+----
+
+* lxml instead BeautifulSoup
+* New dependencies: lxml, grab
+* Templates for ATOM/RSS feed moved to templates/feedzilla/feed directory
+
+
+About feedzilla
+===============
+
 This is Django application that adds to your site ability to aggregate
 ATOM/RSS feeds and display them in single stream. In other words you can
 use feedzilla to build planet site.
@@ -14,7 +28,7 @@ Installation
 * Use ``pip`` or ``easy_install`` to install *feedzilla* package.
 * Install dependencies (see below).
 * Add feedzilla to INSTALLED_APPS.
-* Run ``manage.py syncdb`` or ``manage.py sync`` if you use South.
+* Run ``manage.py syncdb`` or ``manage.py syncdb --migrate`` if you use South.
 * Include ``url('', include('feedzilla.urls'))`` in url config.
 * Setup Site instance via Django admin interface.
 * Setup feedzilla settings via settings.py. See available settings below.
@@ -30,6 +44,8 @@ Dependencies
 * django-common
 * django-tagging
 * feedparser
+* lxml
+* grab
 
 Settings
 ========

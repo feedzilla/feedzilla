@@ -1,0 +1,41 @@
+.tag-cloud {
+}
+
+    .tag-cloud .size-1 {
+        font-size: 0.9em;
+    }
+
+    .tag-cloud .size-2 {
+        font-size: 1.2em;
+    }
+
+    .tag-cloud .size-3 {
+        font-size: 1.4em;
+    }
+
+    .tag-cloud .size-4 {
+        font-size: 1.6em;
+    }
+
+.feedzilla-counters .counter {
+    float: left;
+    padding-right: 1em;
+}
+
+ul.errorlist {
+    margin-left: 0;
+}
+
+.errorlist li {
+    color: red;
+    list-style-type: none;
+}
+
+.blog-post-item .meta-display {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.blog-post-item .meta .date {
+    margin-left: 20px;
+}

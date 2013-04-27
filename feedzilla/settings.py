@@ -11,3 +11,4 @@ FEEDZILLA_TAGS_LOWERCASE = True
 FEEDZILLA_POST_PROCESSORS = (
     'feedzilla.processors.ContentFilterProcessor',
 )
+FEEDZILLA_EXPAND_FULL = False

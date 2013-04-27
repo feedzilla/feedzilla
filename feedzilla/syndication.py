@@ -10,6 +10,9 @@ from feedzilla.models import Post
 
 
 class PostFeed(Feed):
+    title_template = 'feedzilla/feed/post_title.html'
+    description_template = 'feedzilla/feed/post_description.html'
+
     title = settings.FEEDZILLA_SITE_TITLE
     description = settings.FEEDZILLA_SITE_DESCRIPTION
     link = '/'

@@ -4,20 +4,19 @@
 # License: BSD
 from urlparse import urlsplit
 import re
+from grab.tools.lxml_tools import clean_html
 
-from django.db.models import permalink
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from feedzilla.util.clean import safe_html
 from tagging.fields import TagField
 
 class Feed(models.Model):
     title = models.CharField(_('title'), max_length=255)
-    feed_url = models.URLField(_('feed url'), unique=True, verify_exists=False)
-    site_url = models.URLField(_('site url'), verify_exists=False)
+    feed_url = models.CharField(_('feed url'), max_length=255, unique=True)
+    site_url = models.CharField(_('site url'), max_length=255)
     active = models.BooleanField(_('active'), blank=True, default=True)
     etag = models.CharField(u'ETag', max_length=255, blank=True, default='')
     last_checked = models.DateTimeField(_('last checked'), blank=True, null=True)
@@ -82,7 +81,7 @@ class Post(models.Model):
         return self.link
 
     def summary_uncached(self):
-        return safe_html(self.content[:settings.FEEDZILLA_SUMMARY_SIZE])
+        return clean_html(self.content[:settings.FEEDZILLA_SUMMARY_SIZE])
 
 
 class FilterTag(models.Model):

@@ -16,6 +16,8 @@ urlpatterns = patterns('feedzilla.views',
 urlpatterns += patterns('django.contrib.syndication.views',
     # WTF???
     url(r'^ru/projects/feed$', PostFeed(), name='feedzilla_feed'),
-    # valid old line
+    # depprecated
     url(r'^feeds/posts$', PostFeed(), name='feedzilla_feed'),
+    # new
+    url(r'^feed/post$', PostFeed(), name='feedzilla_feed'),
 )

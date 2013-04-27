@@ -2,21 +2,31 @@
 {% load i18n %}
 
 {% block feedzilla_content %}
-<h1>{% block feedzilla_title %}{% trans "Sources" %}{% endblock %}</h1>
-<div class="divider2"></div>
-<div class="contentarea">
-    <ul>
-        {% for feed in feed %}
-        <li style="line-height: 1.6em">
+<h1>{% block feedzilla_title %}{{ FEEDZILLA_SITE_TITLE }}{% endblock %}</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{% trans "Feed Name" %}</th>
+            <th>{% trans "Post Count" %}</th>
+            <th>{% trans "Feed URL" %}</th>
+        </tr>
+    </thead>
+    {% for feed in feed %}
+    <tr>
+        <td>
             <a href="{{ feed.site_url }}">{{ feed.title }}</a>
-            &nbsp;
-            ({{ feed.post_count }})
-            &nbsp;
-            <a href="{{ feed.feed_url }}">
-                <img style="position: relative; top: 3px" src="{{ MEDIA_URL }}feedzilla/img/feed-icon-small.png" />
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
-</div>
+        </td>
+        <td>
+        {{ feed.post_count }}
+        </td>
+        <td>
+        <a href="{{ feed.feed_url }}">
+            <img style="position: relative; top: 3px" src="{{ MEDIA_URL }}feedzilla/img/feed-icon-small.png" />
+        </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}
+

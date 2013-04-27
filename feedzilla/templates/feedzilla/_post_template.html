@@ -1,35 +1,36 @@
 {% load tagging_tags %}
 {% load i18n %}
 
-<div class="post">
-    <h3 class="author">
-        <img class="favicon" src="http://www.google.com/s2/favicons?domain={{ post.feed.site_hostname }}" />
-        <a href="{{ post.feed.site_url }}">{{ post.feed.author_or_title }}</a>
-    </h3>
-    <h4 class="title">
-        <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-    </h4>
+<div class="blog-post-item">
+    <a name="post-{{ post.pk }}"></a>
+    <h3>{{ post.title }}</h3>
     <div class="content">
+        {{ post.summary_uncached|safe }}
+    </div>
+    <div class="content-full" style="display: none">
         {{ post.content|safe }}
     </div>
-    <div class="details">
-        <ul>
-            <li class="share">
-                <!-- AddThis Button BEGIN -->
-                <div class="addthis_toolbox addthis_default_style" addthis:url="{{ post.get_absolute_url }}" addthis:title="{{ post }}">
-                    <a class="addthis_button_preferred_1"></a>
-                    <a class="addthis_button_preferred_2"></a>
-                    <a class="addthis_button_preferred_3"></a>
-                    <a class="addthis_button_preferred_4"></a>
-                    <a class="addthis_button_compact"></a>
-                </div>
-                <!-- AddThis Button END -->
-            </li>
-            <li><span title="{% trans "Date of publication" %}">{{ post.created|date:"d M H:i" }}</span></li>
-            {% if post.tags %}<li><span class="tags" title="{% trans "Labels of post" %}">
+    <div class="meta-display">
+        {% if FEEDZILLA_EXPAND_FULL %}<a class="btn btn-mini" href="#" onclick="var p = $(this).parent().parent(); p.find('.content').hide(); p.find('.content-full').show(); return false;">{% trans "Expand" %}</a> {% trans "or" %} {% endif %}<a class="btn btn-mini btn-success" href="{{ post.get_absolute_url }}">{% trans "Read original" %}</a>
+    </div>
+    <div class="meta">
+        <span class="author">
+            <i class="icon icon-user"></i>
+            <a href="{{ post.feed.site_url }}">{{ post.feed.author_or_title }}</a>
+        </span>
+        <span class="date">
+            <i class="icon icon-time"></i>
+            {{ post.created|date:"d M H:i" }}
+        </span>
+        {% if post.tags %}
+        <div class="row2">
+            <i class="icon icon-tag"></i>
+            <span class="tags">
                 {% tags_for_object post as tags %}
-                {% for tag in tags %}<a href="{% url feedzilla_tag tag.name %}">{{ tag }}</a>{% endfor %}
-            </li>{% endif %}
-        </ul>
+                {% for tag in tags %}<a href="{% url "feedzilla_tag" tag.name %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+            </span>
+        </div>
+        {% endif %}
     </div>
 </div>
+

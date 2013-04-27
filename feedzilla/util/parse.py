@@ -20,8 +20,7 @@ from time import mktime
 from datetime import datetime
 import feedparser
 import logging
-
-import clean
+from grab.tools.lxml_tools import clean_html
 
 log = logging.getLogger('feedzilla.util.parse')
 
@@ -170,8 +169,8 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
 
             summary = content[:summary_size]
 
-            summary = clean.safe_html(summary)
-            content = clean.safe_html(content)
+            summary = clean_html(summary)
+            content = clean_html(content)
 
             created = parse_modified_date(entry, resp['feed'])
             if not created:

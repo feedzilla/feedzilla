@@ -2,8 +2,9 @@ from setuptools import setup, find_packages
 
 setup(
     name = 'feedzilla',
-    version = '0.1.21',
-    description = 'Django application for atom/rss feeds aggregation i.e. planet engine',
+    version = '0.2',
+    description = 'Django application for ATOM/RSS feeds aggregation i.e. planet engine',
+    long_description = open('README.rst').read(),
     url = 'http://bitbucket.org/lorien/feedzilla',
     author = 'Grigoriy Petukhov',
     author_email = 'lorien@lorien.name',

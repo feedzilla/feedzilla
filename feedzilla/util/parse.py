@@ -64,7 +64,7 @@ def guess_date(dates, feed):
     return parsed
 
 
-def parse_modified_date(entry, feed):
+def parse_modified_date(entry, feed, fallback_now=False):
     """
     Find out modified date of feed entry.
     """
@@ -89,6 +89,9 @@ def parse_modified_date(entry, feed):
         guessed = guess_date(unparsed, feed)
         if guessed:
             return guessed
+
+    if fallback_now:
+        return datetime.now()
 
     return None
 
@@ -172,10 +175,10 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
             summary = clean_html(summary)
             content = clean_html(content)
 
-            created = parse_modified_date(entry, resp['feed'])
-            if not created:
-                log.error('Post %s does not has modified date' % link)
-                continue
+            created = parse_modified_date(entry, resp['feed'], fallback_now=True)
+            #if not created:
+                #log.error('Post %s does not has modified date' % link)
+                #continue
 
             tags = get_tags(entry)
             guid = sha.new(link.encode('utf-8')).hexdigest()

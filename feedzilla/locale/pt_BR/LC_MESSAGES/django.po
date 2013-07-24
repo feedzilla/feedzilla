@@ -154,11 +154,11 @@ msgstr "Data de criação"
 
 #: models.py:123
 msgid "Request"
-msgstr "Requisição"
+msgstr "Solicitação"
 
 #: models.py:124
 msgid "Requests"
-msgstr "Requisições"
+msgstr "Solicitações"
 
 #: views.py:74
 #, python-format
@@ -238,7 +238,7 @@ msgstr "Solicitar um blog"
 
 #: templates/feedzilla/_sidebar.html:11
 msgid "Labels"
-msgstr "Etiquetas"
+msgstr "Tags"
 
 #: templates/feedzilla/index.html:5
 msgid "page"
@@ -247,7 +247,7 @@ msgstr "página"
 #: templates/feedzilla/search.html:18
 #, python-format
 msgid "Search for &laquo;%(query)s&raquo;"
-msgstr "Busca por &laquo;%(query)s&raquo;"
+msgstr "Busca por \"%(query)s\""
 
 #: templates/feedzilla/search.html:27
 msgid "Nothing was found"
@@ -275,8 +275,8 @@ msgstr "Enviar"
 #: templates/feedzilla/tag.html:5
 #, python-format
 msgid "Posts with &laquo;%(tag)s&raquo; label"
-msgstr "Posts com a etiqueta &laquo;%(tag)s&raquo;"
+msgstr "Posts com a tag \"%(tag)s\""
 
 #: templates/feedzilla/tag.html:14
 msgid "No posts with such label"
-msgstr "Nenhum post esta etiqueta"
+msgstr "Nenhum post esta tag"

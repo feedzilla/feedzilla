@@ -1,7 +1,12 @@
 # Copyright: 2011, Grigoriy Petukhov
 # Author: Grigoriy Petukhov (http://lorien.name)
 # License: BSD
-from django.conf.urls.defaults import *
+
+# Work around to make it compatible with Django 1.6
+try:
+    from django.conf.urls import *
+except ImportError: 
+    from django.conf.urls.defaults import *
 
 from feedzilla.syndication import PostFeed
 

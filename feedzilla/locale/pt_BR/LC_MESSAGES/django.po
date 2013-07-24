@@ -1,0 +1,282 @@
+# Copyright (C) 2012 Grigory Petukhov
+# This file is distributed under the same license as the feedzilla package.
+# Sergio Oliveira <sergio@tracy.com.br>, 2013
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-07-24 13:58-0300\n"
+"PO-Revision-Date: 2013-07-24 13:22-0300\n"
+"Last-Translator: Sergio Oliveira <sergio@tracy.com.br>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: admin.py:29
+msgid "Feed"
+msgstr "Feed"
+
+#: admin.py:34
+msgid "Site"
+msgstr "Site"
+
+#: admin.py:45
+msgid "Post link"
+msgstr "Link do Post"
+
+#: admin.py:66 admin.py:68
+msgid "Process"
+msgstr "Processo"
+
+#: forms.py:23
+msgid "This address has been already submitted."
+msgstr "Este endereço já havia sido solicitado."
+
+#: models.py:17 models.py:59
+msgid "title"
+msgstr "título"
+
+#: models.py:18
+msgid "feed url"
+msgstr "URL do feed"
+
+#: models.py:19
+msgid "site url"
+msgstr "URL do site"
+
+#: models.py:20 models.py:66
+msgid "active"
+msgstr "ativo"
+
+#: models.py:22
+msgid "last checked"
+msgstr "última verificação"
+
+#: models.py:23
+msgid "allow all messages"
+msgstr "Permitir todas as mensagens"
+
+#: models.py:24
+msgid "blog author"
+msgstr "autor do blog"
+
+#: models.py:25
+msgid "Date of submition"
+msgstr "Data da solicitação"
+
+#: models.py:40 models.py:58
+msgid "feed"
+msgstr "feed"
+
+#: models.py:41
+msgid "feeds"
+msgstr "feeds"
+
+#: models.py:60
+msgid "link"
+msgstr "link"
+
+#: models.py:61
+msgid "summary"
+msgstr "resumo"
+
+#: models.py:62
+msgid "content"
+msgstr "conteúdo"
+
+#: models.py:63
+msgid "creation time"
+msgstr "data de criação"
+
+#: models.py:64
+msgid "identifier"
+msgstr "identificador"
+
+#: models.py:73
+msgid "post"
+msgstr "post"
+
+#: models.py:74
+msgid "posts"
+msgstr "posts"
+
+#: models.py:88 models.py:100
+msgid "Value"
+msgstr "Valor"
+
+#: models.py:89 models.py:101
+msgid "Exact match"
+msgstr "Busca exata"
+
+#: models.py:95
+msgid "Filter tag"
+msgstr "Tag filtro"
+
+#: models.py:96
+msgid "Filter tags"
+msgstr "Tags filtro"
+
+#: models.py:107
+msgid "Filter word"
+msgstr "Palavra filtro"
+
+#: models.py:108
+msgid "Filter words"
+msgstr "Palavras filtro"
+
+#: models.py:112
+msgid "Blog URL"
+msgstr "URL do Blog"
+
+#: models.py:113
+msgid "Blog name"
+msgstr "Nome do blog"
+
+#: models.py:114
+msgid "Name of author of the blog"
+msgstr "Nome do autor do blog"
+
+#: models.py:115 templates/feedzilla/source_list.html:12
+msgid "Feed URL"
+msgstr "URL do feed"
+
+#: models.py:115
+msgid "You can specify what exactly feed you want submit"
+msgstr "Você pode especificar a URL do feed do blog solicitado"
+
+#: models.py:116
+msgid "Creation date"
+msgstr "Data de criação"
+
+#: models.py:123
+msgid "Request"
+msgstr "Requisição"
+
+#: models.py:124
+msgid "Requests"
+msgstr "Requisições"
+
+#: views.py:74
+#, python-format
+msgid "Your query is shorter than %d characters"
+msgstr "Sua query é menor que %d caracteres"
+
+#: views.py:93
+#, python-format
+msgid "New submission for the planet: %s"
+msgstr "Nova solicitação para o planet: %s"
+
+#: views.py:94
+#, python-format
+msgid "%s: new submission"
+msgstr "%s: nova solicitação"
+
+#: templates/404.html:5
+msgid "Requested page was not found. Try to look <a href='/'>home page</a>"
+msgstr ""
+
+#: templates/500.html:2
+msgid ""
+"Something failed. Administrator has been notified. Try to look <a "
+"href='/'>home page</a>."
+msgstr ""
+
+#: templates/base.html:28
+msgid "ATOM feed"
+msgstr "Feed ATOM"
+
+#: templates/base.html:33
+msgid "Search"
+msgstr "Busca"
+
+#: templates/base.html:41
+msgid "News stream"
+msgstr "Novidades"
+
+#: templates/base.html:42
+msgid "Sources"
+msgstr "Fontes"
+
+#: templates/footer.html:8
+msgid "Powered by"
+msgstr ""
+
+#: templates/common/pagination.html:6
+msgid "Later"
+msgstr ""
+
+#: templates/common/pagination.html:9
+#, python-format
+msgid ""
+"Posts <strong>%(start)s</strong>&mdash;<strong>%(end)s</strong> from <strong>"
+"%(count)s"
+msgstr ""
+
+#: templates/common/pagination.html:13
+msgid "Earlier"
+msgstr ""
+
+#: templates/feedzilla/_post_template.html:16
+msgid "Expand"
+msgstr "Expandir"
+
+#: templates/feedzilla/_post_template.html:16
+msgid "or"
+msgstr "ou"
+
+#: templates/feedzilla/_post_template.html:16
+msgid "Read original"
+msgstr "Ler original"
+
+#: templates/feedzilla/_sidebar.html:6 templates/feedzilla/submit_blog.html:5
+msgid "Submit a blog"
+msgstr "Solicitar um blog"
+
+#: templates/feedzilla/_sidebar.html:11
+msgid "Labels"
+msgstr "Etiquetas"
+
+#: templates/feedzilla/index.html:5
+msgid "page"
+msgstr "página"
+
+#: templates/feedzilla/search.html:18
+#, python-format
+msgid "Search for &laquo;%(query)s&raquo;"
+msgstr "Busca por &laquo;%(query)s&raquo;"
+
+#: templates/feedzilla/search.html:27
+msgid "Nothing was found"
+msgstr "Nada foi encontrado"
+
+#: templates/feedzilla/source_list.html:10
+msgid "Feed Name"
+msgstr "Nome do feed"
+
+#: templates/feedzilla/source_list.html:11
+msgid "Post Count"
+msgstr "Número de posts"
+
+#: templates/feedzilla/submit_blog.html:8
+msgid ""
+"Thank you. Your application has been accepted and will be reviewed by admin "
+"in the near time."
+msgstr ""
+"Obrigado. Sua solicitação foi recebida e logo será revisada por um admin."
+
+#: templates/feedzilla/submit_blog.html:13
+msgid "Submit"
+msgstr "Enviar"
+
+#: templates/feedzilla/tag.html:5
+#, python-format
+msgid "Posts with &laquo;%(tag)s&raquo; label"
+msgstr "Posts com a etiqueta &laquo;%(tag)s&raquo;"
+
+#: templates/feedzilla/tag.html:14
+msgid "No posts with such label"
+msgstr "Nenhum post esta etiqueta"

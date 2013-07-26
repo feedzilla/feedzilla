@@ -30,7 +30,7 @@ msgstr "Link do Post"
 
 #: admin.py:66 admin.py:68
 msgid "Process"
-msgstr "Processo"
+msgstr "Processar"
 
 #: forms.py:23
 msgid "This address has been already submitted."

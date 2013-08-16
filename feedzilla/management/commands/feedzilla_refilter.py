@@ -2,7 +2,6 @@
 # Author: Grigoriy Petukhov (http://lorien.name)
 # License: BSD
 import logging
-from datetime import datetime
 
 from django.core.management.base import BaseCommand
 

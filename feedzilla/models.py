@@ -11,7 +11,8 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
-from tagging.fields import TagField
+from taggit.managers import TaggableManager
+
 
 class Feed(models.Model):
     title = models.CharField(_('title'), max_length=255)
@@ -62,11 +63,11 @@ class Post(models.Model):
     content = models.TextField(_('content'), blank=True)
     created = models.DateTimeField(_('creation time'))
     guid = models.CharField(_('identifier'), max_length=255, unique=True)
-    tags = TagField()
     active = models.BooleanField(_('active'), blank=True, default=True)
 
     objects = models.Manager()
     active_objects = ActivePostManager()
+    tags = TaggableManager()
 
     class Meta:
         ordering = ['-created']

@@ -12,10 +12,11 @@ from django.db import connection
 from django.utils.translation import ugettext_lazy as _
 from django.core.mail import mail_admins
 
+from taggit.models import Tag
+
 from common.decorators import render_to
 from common.pagination import paginate
 from common.forms import build_form
-from tagging.models import Tag, TaggedItem
 
 from feedzilla.models import Post, Feed
 from feedzilla.forms import AddBlogForm
@@ -33,13 +34,18 @@ def index(request):
 
 @render_to('feedzilla/tag.html')
 def tag(request, tag_value):
-    tag = get_object_or_404(Tag, name=tag_value)
-    qs = TaggedItem.objects.get_by_model(Post, tag).filter(active=True).order_by('-created')
+    qs = Post.objects.filter(tags__slug__in=[tag_value])
     page = paginate(qs, request, settings.FEEDZILLA_PAGE_SIZE)
 
-    return {'tag': tag,
-            'page': page,
-            }
+    try:
+        tag = Tag.objects.get(slug=tag_value)
+    except Tag.DoesNotExist:
+        tag_name = tag_value 
+    else:
+        tag_name = tag.name
+
+    return {'tag': tag_name,
+            'page': page,}
 
 
 @render_to('feedzilla/source_list.html')

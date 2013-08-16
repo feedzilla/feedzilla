@@ -5,6 +5,16 @@ Feedzilla Django Application
 Changelog
 =========
 
+
+0.30::
+------
+* Bug fixes and a little code clean up
+* pt_BR localization
+* ``django-tagging`` replaced by ``django-taggit``
+* Removed template tag ``feedzilla_tag_cloud``. Using tag cloud from ``django-taggit-templatetags`` instead
+* Using tag slug in URL 
+
+
 0.20::
 ----
 
@@ -42,7 +52,8 @@ Dependencies
 ============
 
 * django-common
-* django-tagging
+* django-taggit
+* django-taggit-templatetags
 * feedparser
 * lxml
 * grab

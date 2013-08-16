@@ -1,31 +1,15 @@
 # Copyright: 2011, Grigoriy Petukhov
 # Author: Grigoriy Petukhov (http://lorien.name)
 # License: BSD
-import random
 
 from django import template
 from django.utils.safestring import mark_safe
-from django.conf import settings
 
-from tagging.models import Tag
-
-from feedzilla.models import Feed, Post
+from feedzilla.models import Feed
 
 
 register = template.Library()
 
-@register.inclusion_tag('feedzilla/_tag_cloud.html', takes_context=True)
-def feedzilla_tag_cloud(context):
-    """
-    Show tag cloud for specified site.
-    """
-
-    tags = Tag.objects.cloud_for_model(Post, filters={'active': True},
-                                       steps=settings.FEEDZILLA_CLOUD_STEPS,
-                                       min_count=settings.FEEDZILLA_CLOUD_MIN_COUNT)
-
-    return {'tags': tags,
-            }
 
 
 @register.inclusion_tag('feedzilla/_donor_list.html')

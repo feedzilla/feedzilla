@@ -1,4 +1,4 @@
-{% load feedzilla_tags i18n %}
+{% load taggit_extras i18n %}
 
 <div class="box">
     <div class="add-blog">
@@ -10,6 +10,6 @@
 <div class="box">
     <h4>{% trans "Labels" %}</h4>
     <div class="tag-cloud">
-    {% feedzilla_tag_cloud %}
+    {% include_tagcloud 'feedzilla.post' %}
     </div>
 </div>

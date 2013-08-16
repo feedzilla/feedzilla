@@ -14,7 +14,7 @@ extract tags.
 # Author: Grigoriy Petukhov (http://lorien.name)
 # License: BSD
 import locale
-import sha
+import hashlib
 import re
 from time import mktime
 from datetime import datetime
@@ -181,7 +181,7 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
                 #continue
 
             tags = get_tags(entry)
-            guid = sha.new(link.encode('utf-8')).hexdigest()
+            guid = hashlib.sha1(link.encode('utf-8')).hexdigest()
 
             entry = {
                 'title': title,

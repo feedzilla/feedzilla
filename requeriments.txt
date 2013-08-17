@@ -1,0 +1,6 @@
+django-common
+django-taggit
+django-taggit-templatetags
+feedparser
+lxml
+grab

@@ -6,8 +6,8 @@
 {% get_tagcloud as tags %}
 {% endif %}
 
-<div>
-{% for tag in tags %}
-<a class="tag size-{{tag.weight|floatformat:0}}" href="{% url "feedzilla_tag" tag.slug %}">{{ tag|escape|feedzilla_strong_spaces }}</a>
-{% endfor %}
+<div  class="tag-cloud">
+  {% for tag in tags %}
+  <a class="tag size-{{tag.weight|floatformat:0}}" href="{% url "feedzilla_tag" tag.slug %}">{{ tag|escape|feedzilla_strong_spaces }}</a>
+  {% endfor %}
 </div>

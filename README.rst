@@ -5,6 +5,15 @@ Feedzilla Django Application
 Changelog
 =========
 
+
+0.21::
+------
+* Bug fixes and a little code clean up
+* pt_BR localization
+* ``django-tagging`` replaced by ``django-taggit``
+* Using tag slug in URL 
+
+
 0.20::
 ----
 
@@ -41,11 +50,14 @@ Installation
 Dependencies
 ============
 
+See
 * django-common
-* django-tagging
+* django-taggit
+* south
 * feedparser
 * lxml
 * grab
+* transliterate
 
 Settings
 ========

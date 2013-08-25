@@ -1,31 +1,18 @@
 # Copyright: 2011, Grigoriy Petukhov
 # Author: Grigoriy Petukhov (http://lorien.name)
 # License: BSD
-import random
+import math
 
 from django import template
 from django.utils.safestring import mark_safe
+from django.db.models import Count
 from django.conf import settings
 
-from tagging.models import Tag
-
-from feedzilla.models import Feed, Post
+from feedzilla.models import Feed, FeedzillaTag
 
 
 register = template.Library()
 
-@register.inclusion_tag('feedzilla/_tag_cloud.html', takes_context=True)
-def feedzilla_tag_cloud(context):
-    """
-    Show tag cloud for specified site.
-    """
-
-    tags = Tag.objects.cloud_for_model(Post, filters={'active': True},
-                                       steps=settings.FEEDZILLA_CLOUD_STEPS,
-                                       min_count=settings.FEEDZILLA_CLOUD_MIN_COUNT)
-
-    return {'tags': tags,
-            }
 
 
 @register.inclusion_tag('feedzilla/_donor_list.html')
@@ -57,6 +44,36 @@ def feedzilla_feed_head(feed_id, number=3):
             'messages': messages,
             }
 
+
 @register.filter
 def feedzilla_strong_spaces(text):
         return mark_safe(text.replace(u' ',u'&nbsp;'))
+
+
+@register.inclusion_tag('feedzilla/_tag_cloud.html', takes_context=True)
+def feedzilla_tag_cloud(context):
+    """
+    Show tag cloud for specified site.
+    """
+
+    tags = FeedzillaTag.objects.annotate(count=Count('items'))
+    tags = tags.filter(count__gte=settings.FEEDZILLA_CLOUD_MIN_COUNT)
+
+    if tags:
+        # normalize count values
+        for tag in tags:
+            tag.count = math.log(tag.count)
+
+        min_count = min(x.count for x in tags)
+        max_count = max(x.count for x in tags)
+        min_weight = 1
+        max_weight = int(settings.FEEDZILLA_CLOUD_STEPS)
+
+        delta_weight = ((max_weight - min_weight) /
+                        float(max(1, max_count - min_count)))
+
+        for tag in tags:
+            tag.weight = int(round(max_weight - (max_count - tag.count) * delta_weight))
+
+    return {'tags': tags,
+            }

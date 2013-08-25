@@ -5,13 +5,20 @@
 from urlparse import urlsplit
 import re
 from grab.tools.lxml_tools import clean_html
+import transliterate
+from transliterate.utils import translit
 
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.utils.text import slugify
 
-from tagging.fields import TagField
+from taggit.managers import TaggableManager
+from taggit.models import GenericTaggedItemBase, TagBase
+
+transliterate.autodiscover()
+
 
 class Feed(models.Model):
     title = models.CharField(_('title'), max_length=255)
@@ -54,6 +61,22 @@ class ActivePostManager(models.Manager):
         return super(ActivePostManager, self).get_query_set().filter(active=True)
 
 
+class FeedzillaTag(TagBase):
+    """
+    Custom version of Tag that
+    knows how to bild slugs for Russian words
+    """
+    def slugify(self, tag, i=None):
+            slug = slugify(translit(tag, 'ru', reversed=True))
+            if i is not None:
+                slug += "-%d" % i
+            return slug
+
+
+class FeedzillaTagItem(GenericTaggedItemBase):
+    tag = models.ForeignKey(FeedzillaTag, related_name='items')
+
+
 class Post(models.Model):
     feed = models.ForeignKey(Feed, verbose_name=_('feed'), related_name='posts')
     title = models.CharField(_('title'), max_length=255)
@@ -62,11 +85,12 @@ class Post(models.Model):
     content = models.TextField(_('content'), blank=True)
     created = models.DateTimeField(_('creation time'))
     guid = models.CharField(_('identifier'), max_length=255, unique=True)
-    tags = TagField()
     active = models.BooleanField(_('active'), blank=True, default=True)
 
     objects = models.Manager()
     active_objects = ActivePostManager()
+    tags = TaggableManager(through=FeedzillaTagItem)
+    rawtags = models.CharField(max_length=255)
 
     class Meta:
         ordering = ['-created']

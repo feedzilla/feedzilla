@@ -3,7 +3,7 @@
 # Author: Grigoriy Petukhov (http://lorien.name)
 # License: BSD
 import logging
-from datetime import datetime
+from django.utils import timezone
 import re
 
 from django.core.management.base import BaseCommand
@@ -45,22 +45,8 @@ class Command(BaseCommand):
                         Post.objects.get(guid=entry['guid'])
                     except Post.DoesNotExist:
 
-                        tags = entry['tags']
-                        if settings.FEEDZILLA_TAGS_LOWERCASE:
-                            tags = set(x.lower() for x in tags)
-                        # Sum of tags lengths should not be
-                        # more than 255 chars
-                        newtags = []
-                        size = 0
-                        for tag in tags:
-                            size += (len(tag) + 2)
-                            if size <= 255:
-                                newtags.append(tag)
-                        tags = newtags
-
                         post = Post(
                             feed=feed,
-                            tags=', '.join(tags),
                             title=entry['title'],
                             content=entry['content'],
                             summary=entry['summary'],
@@ -69,6 +55,21 @@ class Command(BaseCommand):
                             created=entry['created']
                         )
                         post.save()
+
+                        tags = entry['tags']
+                        if tags:
+                            if settings.FEEDZILLA_TAGS_LOWERCASE:
+                                tags = set(x.lower() for x in tags)
+                            # Sum of tags lengths should not be
+                            # more than 255 chars
+                            newtags = []
+                            size = 0
+                            for tag in tags:
+                                size += (len(tag) + 2)
+                                if size <= 255:
+                                    newtags.append(tag)
+
+                            post.tags.add(*newtags)
 
                         # Remember post details
                         post_snapshot = post.__dict__
@@ -84,6 +85,6 @@ class Command(BaseCommand):
                         new_posts += 1
                 logging.debug('New posts: %d' % new_posts)
 
-            feed.last_checked = datetime.now()
+            feed.last_checked = timezone.now()
             feed.save()
             feed.update_counts()

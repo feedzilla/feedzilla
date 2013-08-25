@@ -1,4 +1,3 @@
-{% load tagging_tags %}
 {% load i18n %}
 
 <div class="blog-post-item">
@@ -24,12 +23,11 @@
             <i class="icon icon-time"></i>
             {{ post.created|date:"d M H:i" }}
         </span>
-        {% if post.tags %}
+        {% if post.tags.count %}
         <div class="row2">
             <i class="icon icon-tag"></i>
             <span class="tags">
-                {% tags_for_object post as tags %}
-                {% for tag in tags %}<a href="{% url "feedzilla_tag" tag.name %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
+                {% for tag in post.tags.all %}<a href="{% url "feedzilla_tag" tag.name %}">{{ tag }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}
             </span>
         </div>
         {% endif %}

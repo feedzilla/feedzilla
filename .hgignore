@@ -7,3 +7,8 @@ syntax:glob
 *~
 *.egg-info/
 dist/
+
+# Demo project
+demo/data/db.sqlite
+demo/.env
+demo/feedzilla

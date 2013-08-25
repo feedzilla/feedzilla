@@ -12,8 +12,6 @@ import locale
 
 from django.utils.html import strip_tags
 
-from tagging.models import Tag
-
 from feedzilla.models import FilterTag, FilterWord
 
 TAGS = []
@@ -55,7 +53,7 @@ class ContentFilterProcessor(object):
         post.active = self.match_filters(post)
 
     def match_filters(self, post):
-        for tag in Tag.objects.get_for_object(post):
+        for tag in post.tags.all():
             for filter_tag in TAGS:
                 if filter_tag.search(tag.name.lower()):
                     return True

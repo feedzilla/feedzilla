@@ -3,15 +3,14 @@
 # Author: Grigoriy Petukhov (http://lorien.name)
 # License: BSD
 from django.conf import settings
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.db import connection
 from django.utils.translation import ugettext_lazy as _
 from django.core.mail import mail_admins
 
 from common.pagination import paginate
-from tagging.models import Tag, TaggedItem
 
-from feedzilla.models import Post, Feed
+from feedzilla.models import Post, Feed, FeedzillaTag
 from feedzilla.forms import AddBlogForm
 
 
@@ -24,13 +23,21 @@ def index(request):
 
 
 def tag(request, tag_value):
-    tag = get_object_or_404(Tag, name=tag_value)
-    qs = TaggedItem.objects.get_by_model(Post, tag).filter(active=True).order_by('-created')
+    try:
+        tag = FeedzillaTag.objects.get(slug=tag_value)
+    except FeedzillaTag.DoesNotExist:
+        tag = get_object_or_404(FeedzillaTag, name=tag_value)
+        return redirect('feedzilla_tag', tag.slug, permanent=True)
+
+    qs = Post.objects.filter(tags=tag, active=True).order_by('-created')
     page = paginate(qs, request, settings.FEEDZILLA_PAGE_SIZE)
-    context = {'tag': tag,
-            'page': page,
-            }
-    return render(request, 'feedzilla/tag.html', context)
+
+    context = {
+        'tag': tag.name,
+        'page': page
+    }
+
+    return render(request, 'feedzilla/tag.html', context) 
 
 
 def source_list(request):
@@ -49,7 +56,6 @@ def source_list(request):
     for feed in feeds:
         feed.post_count = count_map.get(feed.pk, 0)
 
-
     context = {'feed': feeds,
             }
     return render(request, 'feedzilla/source_list.html', context)
@@ -64,7 +70,9 @@ def search(request):
     else:
         posts = Post.active_objects.filter(content__icontains=query)
         message = ''
+
     page = paginate(posts, request, settings.FEEDZILLA_PAGE_SIZE)
+
     context = {'page': page,
             'message': message,
             'query': query,
@@ -85,3 +93,8 @@ def submit_blog(request):
             'success': success,
             }
     return render(request, 'feedzilla/submit_blog.html', context)
+
+
+def cloud_page(request):
+    context = {}
+    return render(request, 'feedzilla/cloud_page.html', context)

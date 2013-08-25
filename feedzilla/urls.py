@@ -12,10 +12,11 @@ from feedzilla.syndication import PostFeed
 
 urlpatterns = patterns('feedzilla.views',
     url(r'^$', 'index', name='feedzilla_index'),
-    url('^tag/(?P<tag_value>.+)$', 'tag', name='feedzilla_tag'),
+    url('^tag/([^/]+)$', 'tag', name='feedzilla_tag'),
     url('^sources$', 'source_list', name='feedzilla_source_list'),
     url('^search$', 'search', name='feedzilla_search'),
     url('^submit$', 'submit_blog', name='feedzilla_submit_blog'),
+    url('^cloud$', 'cloud_page', name='feedzilla_cloud_page'),
 )
 
 urlpatterns += patterns('django.contrib.syndication.views',

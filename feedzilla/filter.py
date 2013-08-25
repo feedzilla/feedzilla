@@ -10,8 +10,6 @@ import locale
 
 from django.utils.html import strip_tags
 
-from tagging.models import Tag
-
 CACHE = {}
 
 def build_regexp(value, exact):
@@ -40,7 +38,7 @@ def load_filters():
 def check_post(post):
     load_filters()
 
-    for tag in Tag.objects.get_for_object(post):
+    for tag in post.tags.all():
         for filter_tag in CACHE['tags']:
             if filter_tag.search(tag.name.lower()):
                 return True

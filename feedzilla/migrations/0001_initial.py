@@ -35,7 +35,7 @@ class Migration(SchemaMigration):
             ('content', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('created', self.gf('django.db.models.fields.DateTimeField')()),
             ('guid', self.gf('django.db.models.fields.CharField')(unique=True, max_length=255)),
-            ('tags', self.gf('tagging.fields.TagField')()),
+            ('tags', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('active', self.gf('django.db.models.fields.BooleanField')(default=True)),
         ))
         db.send_create_signal('feedzilla', ['Post'])
@@ -121,7 +121,7 @@ class Migration(SchemaMigration):
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'link': ('django.db.models.fields.TextField', [], {}),
             'summary': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'tags': ('tagging.fields.TagField', [], {}),
+            'tags': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '255'})
         },
         'feedzilla.request': {

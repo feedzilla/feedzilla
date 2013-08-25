@@ -1,0 +1,9 @@
+How to install demo
+===================
+
+1. Run `fub buildenv`
+2. Run `./manage.py syncdb --migrate`
+3. Run python loaddata feedzilla.json
+4. Run ./manage.py feedzilla_update
+5. Run ./manage.py runserver
+6. Open web browser at http://localhost:8000/

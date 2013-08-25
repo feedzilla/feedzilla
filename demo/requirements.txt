@@ -1,0 +1,9 @@
+django
+django-common
+django-extensions
+south
+django-taggit
+feedparser
+lxml
+grab
+transliterate

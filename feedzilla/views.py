@@ -3,16 +3,14 @@
 # Author: Grigoriy Petukhov (http://lorien.name)
 # License: BSD
 from django.conf import settings
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
 from django.db import connection
 from django.utils.translation import ugettext_lazy as _
 from django.core.mail import mail_admins
 
-from taggit.models import Tag
-
 from common.pagination import paginate
 
-from feedzilla.models import Post, Feed
+from feedzilla.models import Post, Feed, FeedzillaTag
 from feedzilla.forms import AddBlogForm
 
 
@@ -25,18 +23,17 @@ def index(request):
 
 
 def tag(request, tag_value):
-    qs = Post.objects.filter(tags__slug__in=[tag_value])
+    try:
+        tag = FeedzillaTag.objects.get(slug=tag_value)
+    except FeedzillaTag.DoesNotExist:
+        tag = get_object_or_404(FeedzillaTag, name=tag_value)
+        return redirect('feedzilla_tag', tag.slug, permanent=True)
+
+    qs = Post.objects.filter(tags=tag, active=True).order_by('-created')
     page = paginate(qs, request, settings.FEEDZILLA_PAGE_SIZE)
 
-    try:
-        tag = Tag.objects.get(slug=tag_value)
-    except Tag.DoesNotExist:
-        tag_name = tag_value 
-    else:
-        tag_name = tag.name
-
     context = {
-        'tag': tag_name,
+        'tag': tag.name,
         'page': page
     }
 
@@ -96,3 +93,8 @@ def submit_blog(request):
             'success': success,
             }
     return render(request, 'feedzilla/submit_blog.html', context)
+
+
+def cloud_page(request):
+    context = {}
+    return render(request, 'feedzilla/cloud_page.html', context)

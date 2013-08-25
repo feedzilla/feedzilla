@@ -17,13 +17,13 @@ class Feed(models.Model):
     title = models.CharField(_('title'), max_length=255)
     feed_url = models.CharField(_('feed url'), max_length=255, unique=True)
     site_url = models.CharField(_('site url'), max_length=255)
-    active = models.BooleanField(_('active'), blank=True, default=True)
+    active = models.BooleanField(_('active'), blank=True, default=True, db_index=True)
     etag = models.CharField(u'ETag', max_length=255, blank=True, default='')
     last_checked = models.DateTimeField(_('last checked'), blank=True, null=True)
     skip_filters = models.BooleanField(_('allow all messages'), blank=True, default=False)
     author = models.CharField(_('blog author'), blank=True, max_length=255)
     created = models.DateTimeField(_('Date of submition'), blank=True, null=True,
-                                   auto_now_add=True)
+                                   auto_now_add=True, db_index=True)
     post_count = models.IntegerField(blank=True, default=0)
     active_post_count = models.IntegerField(blank=True, default=0)
 

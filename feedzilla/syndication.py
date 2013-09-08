@@ -31,4 +31,4 @@ class PostFeed(Feed):
         return item.created
 
     def item_guid(self, item):
-        return str(item.guid)
+        return item.link

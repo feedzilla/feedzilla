@@ -25,8 +25,6 @@ from django.utils.text import slugify
 from taggit.managers import TaggableManager
 from taggit.models import GenericTaggedItemBase, TagBase
 
-transliterate.autodiscover()
-
 
 class Feed(models.Model):
     title = models.CharField(_('title'), max_length=255)

@@ -5,7 +5,15 @@
 from urlparse import urlsplit
 import re
 from grab.tools.lxml_tools import clean_html
-import transliterate
+
+# Compatibility with transliterate < 1.4
+try:
+    from transliterate import autodiscover
+except ImportError:
+    pass
+else:
+    autodiscover()
+
 from transliterate.utils import translit
 
 from django.db import models

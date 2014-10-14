@@ -16,12 +16,14 @@ register = template.Library()
 
 
 @register.inclusion_tag('feedzilla/_donor_list.html')
-def feedzilla_donor_list():
+def feedzilla_donor_list(order_by=None):
     """
     Show aggregated feed.
     """
 
     donors = Feed.objects.all()
+    if order_by:
+        donors = donors.order_by(order_by)
 
     return {'donors': donors,
             }

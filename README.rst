@@ -29,7 +29,7 @@ This is Django application that adds to your site ability to aggregate
 ATOM/RSS feeds and display them in single stream. In other words you can
 use feedzilla to build planet site.
 
-Project page: http://bitbucket.org/lorien/feedzilla
+Project page: https://github.com/feedzilla/feedzilla
 
 Installation
 ============

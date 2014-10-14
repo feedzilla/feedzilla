@@ -21,6 +21,8 @@ from datetime import datetime
 import feedparser
 import logging
 from grab.tools.lxml_tools import clean_html
+from lxml.etree import XMLSyntaxError
+
 
 log = logging.getLogger('feedzilla.util.parse')
 
@@ -193,7 +195,9 @@ def parse_feed(url=None, source_data=None, summary_size=1000, etag=None):
                 'tags': tags,
             }
             resp['entries'].append(entry)
+        except XMLSyntaxError:
+            logging.warning('Error parsing blog feed. Invalid XML syntax.')
         except Exception, ex:
-            logging.error(ex)
+            logging.exception(ex)
 
     return resp

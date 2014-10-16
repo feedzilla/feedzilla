@@ -1,0 +1,19 @@
+*.pyc
+*.pyo
+*.swp
+*.swo
+*.orig
+*~
+
+docs/_build/
+build/
+dist/
+*.egg-info/
+
+# Apple stuff...
+.DS_Store
+
+# Demo project
+demo/data/db.sqlite
+demo/.env
+demo/feedzilla
